@@ -164,6 +164,24 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/infold-merch/infold_merch_0gsdgsd1.jpg",
         "assets/projects/infold-merch/infold_merch_01.jpg"
       ]
+    },
+    {
+      "id": "professional-portfolio",
+      "title": "Professional Portfolio",
+      "category": "Personal Project",
+      "aspect": "landscape",
+      "image": "assets/projects/professional-portfolio/professional-portfolio-01.jpg",
+      "images": [
+        "assets/projects/professional-portfolio/professional-portfolio-01.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-02.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-03.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-04.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-05.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-06.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-07.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-08.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-09.jpg"
+      ]
     }
   ]
 };
