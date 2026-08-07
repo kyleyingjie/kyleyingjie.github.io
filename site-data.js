@@ -182,6 +182,23 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/professional-portfolio/professional-portfolio-08.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-09.jpg"
       ]
+    },
+    {
+      "id": "game-ui-design",
+      "title": "Game UI Design",
+      "category": "Personal Project",
+      "aspect": "landscape",
+      "image": "assets/projects/game-ui-design/UI - Dungeon Sweeper1.jpg",
+      "images": [
+        "assets/projects/game-ui-design/UI - Dungeon Sweeper1.jpg",
+        "assets/projects/game-ui-design/UI - Jackpot1.jpg",
+        "assets/projects/game-ui-design/UI - Kungfu Dash 1.jpg",
+        "assets/projects/game-ui-design/UI - Kungfu Dash 2.jpg",
+        "assets/projects/game-ui-design/UI - Pirate1.jpg",
+        "assets/projects/game-ui-design/UI - Project Ricochet 1.jpg",
+        "assets/projects/game-ui-design/UI - Project Ricochet 2.jpg",
+        "assets/projects/game-ui-design/UI - Shop01.jpg"
+      ]
     }
   ]
 };
