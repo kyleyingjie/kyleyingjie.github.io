@@ -9,7 +9,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     "Personal Project"
   ],
   "profile": {
-    "name": "Kyle Yingjie",
+    "name": "KYLE YINGJIE",
     "role": "Visual Designer & 2D Artist",
     "statement": "Visual and UI design for digital games.",
     "about": "Detail-oriented, adaptable, and collaborative visual designer with experience creating visual and UI content for digital games.",
