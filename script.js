@@ -162,6 +162,7 @@ const els = {
   editorForm: document.querySelector("#editor-form"),
   artworkList: document.querySelector("#editor-artwork-list"),
   artworkTemplate: document.querySelector("#artwork-editor-template"),
+  timelineTemplate: document.querySelector("#timeline-editor-template"),
   publishButton: document.querySelector("#publish-github"),
   publishStatus: document.querySelector("#publish-status"),
   githubToken: document.querySelector("#github-token"),
@@ -477,6 +478,7 @@ function setEditorMode() {
   fillProfileForm();
   renderAppearanceEditor();
   renderCategoryEditor();
+  renderCredentialEditors();
   renderEditorArtworks();
 }
 
@@ -567,6 +569,85 @@ function renderEditorArtworks() {
   });
 }
 
+function renderTimelineEditor(listId, items, kind) {
+  const list = document.querySelector(listId);
+  if (!list) return;
+  list.replaceChildren();
+  items.forEach((item, index) => {
+    const fragment = els.timelineTemplate.content.cloneNode(true);
+    const card = fragment.querySelector(".timeline-editor-card");
+    card.dataset.index = String(index);
+    card.querySelector(".timeline-editor-index").textContent = `${kind === "experience" ? "Experience" : "Education"} ${index + 1}`;
+    card.querySelector(".timeline-years-input").value = item.years || "";
+    card.querySelector(".timeline-role-input").value = item.role || "";
+    card.querySelector(".timeline-place-input").value = item.place || "";
+    card.querySelector(".timeline-summary-input").value = item.summary || "";
+    if (kind === "education") card.querySelector(".timeline-summary-field").hidden = true;
+    card.querySelector(".remove-timeline-item").addEventListener("click", () => {
+      siteData = normaliseData(readEditorData());
+      siteData[kind].splice(index, 1);
+      renderCredentialEditors();
+    });
+    list.append(fragment);
+  });
+}
+
+function renderLineEditor(listId, items, kind, label) {
+  const list = document.querySelector(listId);
+  if (!list) return;
+  list.replaceChildren();
+  items.forEach((item, index) => {
+    const row = document.createElement("div");
+    const input = document.createElement("input");
+    const remove = document.createElement("button");
+    row.className = "line-editor-row";
+    input.type = "text";
+    input.value = item;
+    input.placeholder = `${label} ${index + 1}`;
+    remove.type = "button";
+    remove.className = "quiet-button";
+    remove.textContent = "Remove";
+    remove.addEventListener("click", () => {
+      siteData = normaliseData(readEditorData());
+      siteData[kind].splice(index, 1);
+      renderCredentialEditors();
+    });
+    row.append(input, remove);
+    list.append(row);
+  });
+}
+
+function renderCredentialEditors() {
+  renderTimelineEditor("#experience-editor-list", siteData.experience, "experience");
+  renderTimelineEditor("#education-editor-list", siteData.education, "education");
+  renderLineEditor("#skills-editor-list", siteData.skills, "skills", "Skill");
+  renderLineEditor("#recognition-editor-list", siteData.recognition, "recognition", "Recognition");
+}
+
+function addExperience() {
+  siteData = normaliseData(readEditorData());
+  siteData.experience.push({ years: "", role: "", place: "", summary: "" });
+  renderCredentialEditors();
+}
+
+function addEducation() {
+  siteData = normaliseData(readEditorData());
+  siteData.education.push({ years: "", role: "", place: "" });
+  renderCredentialEditors();
+}
+
+function addSkill() {
+  siteData = normaliseData(readEditorData());
+  siteData.skills.push("");
+  renderCredentialEditors();
+}
+
+function addRecognition() {
+  siteData = normaliseData(readEditorData());
+  siteData.recognition.push("");
+  renderCredentialEditors();
+}
+
 function readEditorData() {
   const profile = {
     name: document.querySelector("#edit-name").value.trim(),
@@ -615,15 +696,22 @@ function readEditorData() {
       image: card.querySelector(".artwork-image-input").value.trim()
     };
   });
+  const readTimeline = (listId, includeSummary) => [...document.querySelectorAll(`${listId} .timeline-editor-card`)].map((card) => ({
+    years: card.querySelector(".timeline-years-input").value.trim(),
+    role: card.querySelector(".timeline-role-input").value.trim(),
+    place: card.querySelector(".timeline-place-input").value.trim(),
+    ...(includeSummary ? { summary: card.querySelector(".timeline-summary-input").value.trim() } : {})
+  }));
+  const readLines = (listId) => [...document.querySelectorAll(`${listId} input`)].map((input) => input.value.trim()).filter(Boolean);
   return {
     appearance: { ...siteData.appearance },
     categories: [...siteData.categories],
     profile,
     pages,
-    experience: siteData.experience,
-    education: siteData.education,
-    skills: siteData.skills,
-    recognition: siteData.recognition,
+    experience: readTimeline("#experience-editor-list", true),
+    education: readTimeline("#education-editor-list", false),
+    skills: readLines("#skills-editor-list"),
+    recognition: readLines("#recognition-editor-list"),
     artworks
   };
 }
@@ -668,6 +756,7 @@ function saveLocalData(event) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
   renderSite();
   fillProfileForm();
+  renderCredentialEditors();
   renderEditorArtworks();
 }
 
@@ -704,6 +793,7 @@ function importData(event) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
       renderSite();
       fillProfileForm();
+      renderCredentialEditors();
       renderEditorArtworks();
     } catch {
       window.alert("That file is not valid portfolio site data.");
@@ -720,6 +810,7 @@ function resetData() {
   fillProfileForm();
   renderAppearanceEditor();
   renderCategoryEditor();
+  renderCredentialEditors();
   renderEditorArtworks();
 }
 
@@ -875,6 +966,7 @@ async function publishToGitHub() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
     renderSite();
     fillProfileForm();
+    renderCredentialEditors();
     renderEditorArtworks();
     showPublishStatus(`Published${uploadedImages ? ` ${uploadedImages} image${uploadedImages === 1 ? "" : "s"} and` : ""} your portfolio. Your live site will refresh shortly.`, "success");
   } catch (error) {
@@ -905,6 +997,10 @@ window.addEventListener("keydown", (event) => {
 if (els.editorForm) {
   restorePublishToken();
   document.querySelector("#add-artwork").addEventListener("click", addArtwork);
+  document.querySelector("#add-experience").addEventListener("click", addExperience);
+  document.querySelector("#add-education").addEventListener("click", addEducation);
+  document.querySelector("#add-skill").addEventListener("click", addSkill);
+  document.querySelector("#add-recognition").addEventListener("click", addRecognition);
   document.querySelector("#add-category").addEventListener("click", addCategory);
   document.querySelector("#new-category").addEventListener("keydown", (event) => {
     if (event.key === "Enter") {

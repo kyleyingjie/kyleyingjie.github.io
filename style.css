@@ -142,12 +142,22 @@ html.lightbox-open, body.lightbox-open { overflow: hidden; }
 #editor-form { padding: 24px; }
 .editor-section { padding: 0 0 28px; margin-bottom: 28px; border-bottom: 1px solid var(--line); }
 .editor-section h3 { margin-bottom: 18px; }
+.editor-section h4 { margin: 0; font-size: 0.95rem; }
+.editor-subsection { padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--line); }
+.editor-subsection:first-of-type { padding-top: 0; margin-top: 0; border-top: 0; }
+.editor-subsection > .editor-section-title { margin-bottom: 12px; }
 .editor-section label { display: grid; gap: 7px; margin: 0 0 14px; color: #373a36; font-size: 0.9rem; font-weight: 650; }
 .editor-section input, .editor-section textarea, .editor-section select { width: 100%; padding: 10px 11px; border: 1px solid #bdbfb8; border-radius: 3px; background: white; color: var(--ink); font-weight: 400; }
 .editor-section textarea { resize: vertical; }
 .editor-section-title, .artwork-editor-card-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .artwork-editor-card { padding: 16px; margin-bottom: 14px; border: 1px solid var(--line); border-radius: 4px; background: #fbfaf7; }
 .artwork-editor-card-heading { margin-bottom: 13px; color: var(--muted); font-size: 0.85rem; }
+.timeline-editor-card { padding: 16px; margin-bottom: 14px; border: 1px solid var(--line); border-radius: 4px; background: #fbfaf7; }
+.timeline-editor-card .artwork-editor-card-heading { margin-bottom: 13px; }
+.line-editor-list { display: grid; gap: 8px; }
+.line-editor-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+.line-editor-row input { min-width: 0; }
+.line-editor-row .quiet-button { min-height: 34px; }
 .small-button, .secondary-button, .quiet-button { padding: 8px 11px; border-radius: 3px; background: var(--surface); color: var(--ink); }
 .small-button:hover, .secondary-button:hover { background: #dfe2d9; }
 .primary-button { width: 100%; padding: 11px 14px; border-radius: 3px; background: var(--accent); color: var(--accent-ink); font-weight: 700; }

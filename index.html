@@ -99,6 +99,37 @@
         <label>Contact message<textarea id="edit-contact-copy" rows="3"></textarea></label>
         <label>Footer note<input id="edit-contact-footer"></label>
       </section>
+      <section class="editor-section credentials-editor-section">
+        <h3>About page content</h3>
+        <div class="editor-subsection">
+          <div class="editor-section-title">
+            <h4>Experience</h4>
+            <button class="small-button" id="add-experience" type="button">Add experience</button>
+          </div>
+          <div id="experience-editor-list"></div>
+        </div>
+        <div class="editor-subsection">
+          <div class="editor-section-title">
+            <h4>Education</h4>
+            <button class="small-button" id="add-education" type="button">Add education</button>
+          </div>
+          <div id="education-editor-list"></div>
+        </div>
+        <div class="editor-subsection">
+          <div class="editor-section-title">
+            <h4>Skills</h4>
+            <button class="small-button" id="add-skill" type="button">Add skill</button>
+          </div>
+          <div class="line-editor-list" id="skills-editor-list"></div>
+        </div>
+        <div class="editor-subsection">
+          <div class="editor-section-title">
+            <h4>Recognition</h4>
+            <button class="small-button" id="add-recognition" type="button">Add recognition</button>
+          </div>
+          <div class="line-editor-list" id="recognition-editor-list"></div>
+        </div>
+      </section>
       <section class="editor-section appearance-section">
         <h3>Style</h3>
         <fieldset class="style-fieldset">
@@ -198,6 +229,19 @@
       <label>Category<select class="artwork-category-input"></select></label>
       <label>Image path or URL<input class="artwork-image-input" placeholder="assets/project-name.jpg"></label>
       <label class="file-input-label">Upload image for local preview<input class="artwork-upload-input" type="file" accept="image/*"></label>
+    </article>
+  </template>
+
+  <template id="timeline-editor-template">
+    <article class="timeline-editor-card">
+      <div class="artwork-editor-card-heading">
+        <span class="timeline-editor-index"></span>
+        <button class="quiet-button remove-timeline-item" type="button">Remove</button>
+      </div>
+      <label>Dates<input class="timeline-years-input"></label>
+      <label>Role or qualification<input class="timeline-role-input"></label>
+      <label>Company or school<input class="timeline-place-input"></label>
+      <label class="timeline-summary-field">Description<textarea class="timeline-summary-input" rows="3"></textarea></label>
     </article>
   </template>
 
