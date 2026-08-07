@@ -205,7 +205,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Fan Art",
       "category": "Personal Project",
       "aspect": "portrait",
-      "image": "assets/projects/fan-art/splash 0111.jpg",
+      "image": "assets/projects/fan-art/Elf_in_forest_splash_art_001.jpg",
       "images": [
         "assets/projects/fan-art/splash 0111.jpg",
         "assets/projects/fan-art/splash 0222.jpg",
