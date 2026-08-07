@@ -1,6 +1,6 @@
 const STORAGE_KEY = "kyleyingjie-portfolio-site-data-v1";
 const EDITOR_MODE = new URLSearchParams(window.location.search).get("edit") === "1";
-const DEFAULT_CATEGORIES = ["Environment Concept Design", "Mobile Game UI", "2D Assets", "Character Art", "Personal Project"];
+const DEFAULT_CATEGORIES = ["Personal Project"];
 
 const DEFAULT_SITE_DATA = {
   appearance: {
@@ -42,14 +42,6 @@ const DEFAULT_SITE_DATA = {
     "Crowbar 2018 - Effects Bronze Award (Team)"
   ],
   artworks: [
-    { id: "verdant", title: "Verdant Relay", category: "Environment Concept Design", placeholder: "verdant", aspect: "portrait" },
-    { id: "archipelago", title: "Archipelago Transit", category: "Environment Concept Design", placeholder: "archipelago", aspect: "landscape" },
-    { id: "sunder", title: "Sunder Market", category: "Environment Concept Design", placeholder: "sunder", aspect: "square" },
-    { id: "wayfinder", title: "Wayfinder HUD", category: "Mobile Game UI", placeholder: "wayfinder", aspect: "portrait" },
-    { id: "fieldnotes", title: "Field Notes", category: "2D Assets", placeholder: "fieldnotes", aspect: "landscape" },
-    { id: "relic", title: "Relic Studies", category: "2D Assets", placeholder: "relic", aspect: "portrait" },
-    { id: "marrow", title: "Marrow", category: "Character Art", placeholder: "marrow", aspect: "portrait" },
-    { id: "ferro", title: "Ferro Courier", category: "Character Art", placeholder: "ferro", aspect: "square" },
     {
       id: "for-fun-challenge",
       title: "For Fun Challenge",
