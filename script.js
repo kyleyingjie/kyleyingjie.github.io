@@ -70,13 +70,14 @@ const DEFAULT_SITE_DATA = {
     }
   ],
   education: [
-    { years: "Jul 2017 - May 2019", role: "Bachelor of Arts (Animation Art)", place: "LASALLE College of the Arts, Singapore - Second Class Honours (Upper Division)" },
-    { years: "2011 - 2012", role: "A-Levels", place: "Catholic Junior College, Singapore" }
+    { years: "Jul 2017 - May 2019", role: "Bachelor of Arts (Animation Art)", place: "LASALLE College of the Arts, Singapore - Second Class Honours (Upper Division)" }
   ],
   skills: [
     "Illustration",
     "UI Design",
     "Adobe Photoshop",
+    "Blender",
+    "ZBrush",
     "Midjourney",
     "Stable Diffusion",
     "Runway"
