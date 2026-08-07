@@ -214,6 +214,21 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/fan-art/Elf_in_forest_splash_art_001.jpg",
         "assets/projects/fan-art/bust.jpeg"
       ]
+    },
+    {
+      "id": "creature-design",
+      "title": "Creature Design",
+      "category": "Personal Project",
+      "aspect": "landscape",
+      "image": "assets/projects/creature-design/Character 2 - Copy.jpg",
+      "images": [
+        "assets/projects/creature-design/Character 2.jpg",
+        "assets/projects/creature-design/Character 3.jpg",
+        "assets/projects/creature-design/Character 4a.jpg",
+        "assets/projects/creature-design/Character 4b.jpg",
+        "assets/projects/creature-design/Character 10.jpg",
+        "assets/projects/creature-design/Character 2 - Copy.jpg"
+      ]
     }
   ]
 };
