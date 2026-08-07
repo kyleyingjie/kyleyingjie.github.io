@@ -150,6 +150,20 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/klaus-environment/Group 3.jpg",
         "assets/projects/klaus-environment/Klaus_animated_film_environment_005.jpg"
       ]
+    },
+    {
+      "id": "infold-merch",
+      "title": "Infold Merch Design",
+      "category": "Personal Project",
+      "aspect": "landscape",
+      "image": "assets/projects/infold-merch/Group 8.jpg",
+      "images": [
+        "assets/projects/infold-merch/Group 7.jpg",
+        "assets/projects/infold-merch/Group 8.jpg",
+        "assets/projects/infold-merch/Group 9dsg.jpg",
+        "assets/projects/infold-merch/infold_merch_0gsdgsd1.jpg",
+        "assets/projects/infold-merch/infold_merch_01.jpg"
+      ]
     }
   ]
 };
