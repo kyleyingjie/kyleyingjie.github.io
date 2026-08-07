@@ -6,7 +6,10 @@ const DEFAULT_SITE_DATA = {
   appearance: {
     tone: "warm",
     accent: "forest",
-    density: "spacious"
+    density: "spacious",
+    font: "modern",
+    textSize: "medium",
+    headingSize: "standard"
   },
   categories: DEFAULT_CATEGORIES,
   profile: {
@@ -20,6 +23,30 @@ const DEFAULT_SITE_DATA = {
     linkedin: "",
     cvUrl: "assets/Kyle_Yingjie_Resume_2026.pdf",
     cvLabel: "Download CV (PDF)"
+  },
+  pages: {
+    work: {
+      eyebrow: "Visual Designer & 2D Artist",
+      title: "Kyle Zhen Yingjie",
+      intro: "Visual and UI design for digital games.",
+      linkLabel: "Selected work",
+      sectionEyebrow: "Selected projects",
+      sectionTitle: "Work"
+    },
+    about: {
+      eyebrow: "Profile",
+      title: "About",
+      experienceTitle: "Experience",
+      educationTitle: "Education",
+      skillsTitle: "Skills",
+      recognitionTitle: "Recognition"
+    },
+    contact: {
+      eyebrow: "Available for projects",
+      title: "Let's work together.",
+      intro: "For commissions, freelance work, or collaboration enquiries, get in touch.",
+      footer: "Kyle Zhen Yingjie - Visual Designer & 2D Artist"
+    }
   },
   experience: [
     {
@@ -101,7 +128,20 @@ const els = {
   artistRole: document.querySelector("#artist-role"),
   siteTitle: document.querySelector("#site-title"),
   statement: document.querySelector("#artist-statement"),
+  workLinkLabel: document.querySelector("#work-link-label"),
+  workSectionEyebrow: document.querySelector("#work-section-eyebrow"),
+  workSectionTitle: document.querySelector("#work-title"),
   about: document.querySelector("#about-copy"),
+  aboutEyebrow: document.querySelector("#about-eyebrow"),
+  aboutTitle: document.querySelector("#about-title"),
+  experienceTitle: document.querySelector("#experience-title"),
+  educationTitle: document.querySelector("#education-title"),
+  skillsTitle: document.querySelector("#skills-title"),
+  recognitionTitle: document.querySelector("#recognition-title"),
+  contactEyebrow: document.querySelector("#contact-eyebrow"),
+  contactTitle: document.querySelector("#contact-title"),
+  contactCopy: document.querySelector("#contact-copy"),
+  contactFooter: document.querySelector("#contact-footer-note"),
   resume: document.querySelector("#resume-link"),
   email: document.querySelector("#contact-email"),
   phone: document.querySelector("#contact-phone"),
@@ -142,10 +182,12 @@ function loadSiteData() {
 function normaliseData(rawData) {
   const fallback = cloneDefaultData();
   if (!rawData || typeof rawData !== "object") return fallback;
+  const profile = { ...fallback.profile, ...(rawData.profile || {}) };
   return {
     appearance: { ...fallback.appearance, ...(rawData.appearance || {}) },
     categories: normaliseCategories(rawData.categories, fallback.categories),
-    profile: { ...fallback.profile, ...(rawData.profile || {}) },
+    profile,
+    pages: normalisePages(rawData.pages, profile),
     experience: Array.isArray(rawData.experience) ? rawData.experience : fallback.experience,
     education: Array.isArray(rawData.education) ? rawData.education : fallback.education,
     skills: Array.isArray(rawData.skills) ? rawData.skills : fallback.skills,
@@ -198,15 +240,28 @@ function imageSource(artwork) {
 }
 
 function renderSite() {
-  const { profile } = siteData;
+  const { profile, pages } = siteData;
   applyAppearance();
   const pageName = { about: "About", contact: "Contact" }[document.body.dataset.page];
   document.title = pageName ? `${pageName} - ${profile.name}` : `${profile.name} - ${profile.role}`;
   if (els.navName) els.navName.textContent = profile.name;
-  if (els.artistRole) els.artistRole.textContent = profile.role;
-  if (els.siteTitle) els.siteTitle.textContent = profile.name;
-  if (els.statement) els.statement.textContent = profile.statement;
+  if (els.artistRole) els.artistRole.textContent = pages.work.eyebrow;
+  if (els.siteTitle) els.siteTitle.textContent = pages.work.title;
+  if (els.statement) els.statement.textContent = pages.work.intro;
+  if (els.workLinkLabel) els.workLinkLabel.textContent = pages.work.linkLabel;
+  if (els.workSectionEyebrow) els.workSectionEyebrow.textContent = pages.work.sectionEyebrow;
+  if (els.workSectionTitle) els.workSectionTitle.textContent = pages.work.sectionTitle;
   if (els.about) els.about.textContent = profile.about;
+  if (els.aboutEyebrow) els.aboutEyebrow.textContent = pages.about.eyebrow;
+  if (els.aboutTitle) els.aboutTitle.textContent = pages.about.title;
+  if (els.experienceTitle) els.experienceTitle.textContent = pages.about.experienceTitle;
+  if (els.educationTitle) els.educationTitle.textContent = pages.about.educationTitle;
+  if (els.skillsTitle) els.skillsTitle.textContent = pages.about.skillsTitle;
+  if (els.recognitionTitle) els.recognitionTitle.textContent = pages.about.recognitionTitle;
+  if (els.contactEyebrow) els.contactEyebrow.textContent = pages.contact.eyebrow;
+  if (els.contactTitle) els.contactTitle.textContent = pages.contact.title;
+  if (els.contactCopy) els.contactCopy.textContent = pages.contact.intro;
+  if (els.contactFooter) els.contactFooter.textContent = pages.contact.footer;
   if (els.email) {
     els.email.textContent = profile.email;
     els.email.href = `mailto:${profile.email}`;
@@ -230,10 +285,13 @@ function renderSite() {
 }
 
 function applyAppearance() {
-  const { tone, accent, density } = siteData.appearance;
+  const { tone, accent, density, font, textSize, headingSize } = siteData.appearance;
   document.body.dataset.tone = tone;
   document.body.dataset.accent = accent;
   document.body.dataset.density = density;
+  document.body.dataset.font = font;
+  document.body.dataset.textSize = textSize;
+  document.body.dataset.headingSize = headingSize;
 }
 
 function renderSocialLinks() {
@@ -348,6 +406,42 @@ function openLightbox(index) {
   els.lightbox.scrollTo({ top: 0 });
 }
 
+function pageDefaults(profile) {
+  return {
+    work: {
+      eyebrow: profile.role,
+      title: profile.name,
+      intro: profile.statement,
+      linkLabel: "Selected work",
+      sectionEyebrow: "Selected projects",
+      sectionTitle: "Work"
+    },
+    about: {
+      eyebrow: "Profile",
+      title: "About",
+      experienceTitle: "Experience",
+      educationTitle: "Education",
+      skillsTitle: "Skills",
+      recognitionTitle: "Recognition"
+    },
+    contact: {
+      eyebrow: "Available for projects",
+      title: "Let's work together.",
+      intro: "For commissions, freelance work, or collaboration enquiries, get in touch.",
+      footer: `${profile.name} - ${profile.role}`
+    }
+  };
+}
+
+function normalisePages(pages, profile) {
+  const fallback = pageDefaults(profile);
+  return {
+    work: { ...fallback.work, ...(pages?.work || {}) },
+    about: { ...fallback.about, ...(pages?.about || {}) },
+    contact: { ...fallback.contact, ...(pages?.contact || {}) }
+  };
+}
+
 function closeLightbox() {
   if (els.lightbox && els.lightbox.open) els.lightbox.close();
 }
@@ -409,7 +503,7 @@ function renderAppearanceEditor() {
 }
 
 function fillProfileForm() {
-  const { profile } = siteData;
+  const { profile, pages } = siteData;
   document.querySelector("#edit-name").value = profile.name;
   document.querySelector("#edit-role").value = profile.role;
   document.querySelector("#edit-statement").value = profile.statement;
@@ -420,6 +514,22 @@ function fillProfileForm() {
   document.querySelector("#edit-linkedin").value = profile.linkedin;
   document.querySelector("#edit-cv-url").value = profile.cvUrl;
   document.querySelector("#edit-cv-label").value = profile.cvLabel;
+  document.querySelector("#edit-work-eyebrow").value = pages.work.eyebrow;
+  document.querySelector("#edit-work-title").value = pages.work.title;
+  document.querySelector("#edit-work-intro").value = pages.work.intro;
+  document.querySelector("#edit-work-link-label").value = pages.work.linkLabel;
+  document.querySelector("#edit-work-section-eyebrow").value = pages.work.sectionEyebrow;
+  document.querySelector("#edit-work-section-title").value = pages.work.sectionTitle;
+  document.querySelector("#edit-about-eyebrow").value = pages.about.eyebrow;
+  document.querySelector("#edit-about-title").value = pages.about.title;
+  document.querySelector("#edit-experience-title").value = pages.about.experienceTitle;
+  document.querySelector("#edit-education-title").value = pages.about.educationTitle;
+  document.querySelector("#edit-skills-title").value = pages.about.skillsTitle;
+  document.querySelector("#edit-recognition-title").value = pages.about.recognitionTitle;
+  document.querySelector("#edit-contact-eyebrow").value = pages.contact.eyebrow;
+  document.querySelector("#edit-contact-title").value = pages.contact.title;
+  document.querySelector("#edit-contact-copy").value = pages.contact.intro;
+  document.querySelector("#edit-contact-footer").value = pages.contact.footer;
 }
 
 function renderEditorArtworks() {
@@ -466,6 +576,30 @@ function readEditorData() {
     cvUrl: document.querySelector("#edit-cv-url").value.trim(),
     cvLabel: document.querySelector("#edit-cv-label").value.trim()
   };
+  const pages = {
+    work: {
+      eyebrow: document.querySelector("#edit-work-eyebrow").value.trim(),
+      title: document.querySelector("#edit-work-title").value.trim(),
+      intro: document.querySelector("#edit-work-intro").value.trim(),
+      linkLabel: document.querySelector("#edit-work-link-label").value.trim(),
+      sectionEyebrow: document.querySelector("#edit-work-section-eyebrow").value.trim(),
+      sectionTitle: document.querySelector("#edit-work-section-title").value.trim()
+    },
+    about: {
+      eyebrow: document.querySelector("#edit-about-eyebrow").value.trim(),
+      title: document.querySelector("#edit-about-title").value.trim(),
+      experienceTitle: document.querySelector("#edit-experience-title").value.trim(),
+      educationTitle: document.querySelector("#edit-education-title").value.trim(),
+      skillsTitle: document.querySelector("#edit-skills-title").value.trim(),
+      recognitionTitle: document.querySelector("#edit-recognition-title").value.trim()
+    },
+    contact: {
+      eyebrow: document.querySelector("#edit-contact-eyebrow").value.trim(),
+      title: document.querySelector("#edit-contact-title").value.trim(),
+      intro: document.querySelector("#edit-contact-copy").value.trim(),
+      footer: document.querySelector("#edit-contact-footer").value.trim()
+    }
+  };
   const cards = [...els.artworkList.querySelectorAll(".artwork-editor-card")];
   const artworks = cards.map((card) => {
     const existing = siteData.artworks.find((artwork) => artwork.id === card.dataset.id) || {};
@@ -481,6 +615,7 @@ function readEditorData() {
     appearance: { ...siteData.appearance },
     categories: [...siteData.categories],
     profile,
+    pages,
     experience: siteData.experience,
     education: siteData.education,
     skills: siteData.skills,
