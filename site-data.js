@@ -121,6 +121,21 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/survivor-pack/Art-test_KyleYingjie_02.jpg",
         "assets/projects/survivor-pack/art-test-02_02.jpg"
       ]
+    },
+    {
+      "id": "giant-armor-glove",
+      "title": "Giant Armor Glove Design",
+      "category": "Personal Project",
+      "aspect": "landscape",
+      "image": "assets/projects/giant-armor-glove/Giant_armor_glove_design_02.jpg",
+      "images": [
+        "assets/projects/giant-armor-glove/Giant_armor_glove_design_00asfa1.jpg",
+        "assets/projects/giant-armor-glove/Giant_armor_glove_design_00fsaf1.jpg",
+        "assets/projects/giant-armor-glove/Giant_armor_glove_design_02.jpg",
+        "assets/projects/giant-armor-glove/Giant_armor_glove_design_03.jpg",
+        "assets/projects/giant-armor-glove/Character_design_with_oversized_gauntlet.jpg",
+        "assets/projects/giant-armor-glove/Giant_armor_glove_design_05.jpg"
+      ]
     }
   ]
 };
