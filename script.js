@@ -712,11 +712,11 @@ async function publishToGitHub() {
     renderSite();
     fillProfileForm();
     renderEditorArtworks();
-    tokenInput.value = "";
     showPublishStatus(`Published${uploadedImages ? ` ${uploadedImages} image${uploadedImages === 1 ? "" : "s"} and` : ""} your portfolio. Your live site will refresh shortly.`, "success");
   } catch (error) {
     showPublishStatus(`Publish failed: ${error.message}`, "error");
   } finally {
+    tokenInput.value = "";
     els.publishButton.disabled = false;
   }
 }
