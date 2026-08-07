@@ -147,7 +147,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/klaus-environment/Klaus_animated_film_environment_001.jpg",
         "assets/projects/klaus-environment/Group 4.jpg",
         "assets/projects/klaus-environment/Group 2.jpg",
-        "assets/projects/klaus-environment/Group 3.jpg"
+        "assets/projects/klaus-environment/Group 3.jpg",
+        "assets/projects/klaus-environment/Klaus_animated_film_environment_005.jpg"
       ]
     }
   ]
