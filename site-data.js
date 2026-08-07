@@ -73,6 +73,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "category": "Personal Project",
       "aspect": "landscape",
       "images": [
+        "assets/projects/for-fun-challenge/sketches_for_ipad-5.jpg",
         "assets/projects/for-fun-challenge/001_sketches_for_full-team.jpg",
         "assets/projects/for-fun-challenge/002sketches_for_team-indi_start.jpg",
         "assets/projects/for-fun-challenge/003_sketches_for_team-indi_yve.jpg",
@@ -91,7 +92,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/for-fun-challenge/015sketches_for_uranus.jpg",
         "assets/projects/for-fun-challenge/016sketches_for_franco.jpg"
       ],
-      "image": ""
+      "image": "assets/projects/for-fun-challenge/sketches_for_ipad-5.jpg"
     },
     {
       "id": "elf-forager",
