@@ -92,6 +92,21 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/for-fun-challenge/016sketches_for_franco.jpg"
       ],
       "image": ""
+    },
+    {
+      "id": "elf-forager",
+      "title": "Stylized Prop Design",
+      "category": "Personal Project",
+      "aspect": "landscape",
+      "image": "assets/projects/elf-forager/elf-forager_03.jpg",
+      "images": [
+        "assets/projects/elf-forager/elf-forager_01.jpg",
+        "assets/projects/elf-forager/elf-forager_02.jpg",
+        "assets/projects/elf-forager/elf-forager_03.jpg",
+        "assets/projects/elf-forager/elf-forager_04.jpg",
+        "assets/projects/elf-forager/elf-forager_05.jpg",
+        "assets/projects/elf-forager/elf-pots_01.jpg"
+      ]
     }
   ]
 };

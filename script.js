@@ -239,8 +239,9 @@ function placeholderImage(artwork) {
 }
 
 function imageSource(artwork) {
+  if (artwork.image && artwork.image.trim()) return artwork.image.trim();
   if (Array.isArray(artwork.images) && artwork.images.length) return artwork.images[0];
-  return artwork.image && artwork.image.trim() ? artwork.image.trim() : placeholderImage(artwork);
+  return placeholderImage(artwork);
 }
 
 function renderSite() {
