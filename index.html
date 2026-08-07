@@ -121,8 +121,7 @@
         <div id="editor-artwork-list"></div>
       </section>
       <section class="editor-section editor-actions">
-        <button class="primary-button" type="submit">Save locally</button>
-        <button class="primary-button publish-button" id="publish-github" type="button">Publish live website</button>
+        <button class="primary-button" type="submit">Save preview only</button>
         <div class="github-publish-fields">
           <label>GitHub account<input id="github-owner" value="kyleyingjie" autocapitalize="none" autocomplete="username" spellcheck="false"></label>
           <label>Repository<input id="github-repo" value="kyleyingjie.github.io" autocapitalize="none" spellcheck="false"></label>
@@ -130,6 +129,7 @@
           <label>GitHub publishing token<input id="github-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
           <a class="publish-token-link" href="https://github.com/settings/personal-access-tokens/new?name=Kyle%20Portfolio%20Publisher&amp;description=Publish%20Kyle%20Yingjie%20portfolio&amp;target_name=kyleyingjie&amp;expires_in=365&amp;contents=write" target="_blank" rel="noreferrer">Create publishing token</a>
         </div>
+        <button class="primary-button publish-button" id="publish-github" type="button">Publish live website</button>
         <p class="publish-status" id="publish-status" role="status" aria-live="polite" hidden></p>
         <button class="secondary-button" id="export-data" type="button">Export site data</button>
         <button class="secondary-button" id="export-publish-file" type="button">Export publish file</button>
