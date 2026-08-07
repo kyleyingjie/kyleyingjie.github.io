@@ -122,7 +122,9 @@ const els = {
   editorPanel: document.querySelector("#editor-panel"),
   editorForm: document.querySelector("#editor-form"),
   artworkList: document.querySelector("#editor-artwork-list"),
-  artworkTemplate: document.querySelector("#artwork-editor-template")
+  artworkTemplate: document.querySelector("#artwork-editor-template"),
+  publishButton: document.querySelector("#publish-github"),
+  publishStatus: document.querySelector("#publish-status")
 };
 
 function cloneDefaultData() {
@@ -200,19 +202,26 @@ function imageSource(artwork) {
 function renderSite() {
   const { profile } = siteData;
   applyAppearance();
-  document.title = `${profile.name} - ${profile.role}`;
-  els.navName.textContent = profile.name;
-  els.artistRole.textContent = profile.role;
-  els.siteTitle.textContent = profile.name;
-  els.statement.textContent = profile.statement;
-  els.about.textContent = profile.about;
-  els.email.textContent = profile.email;
-  els.email.href = `mailto:${profile.email}`;
-  els.phone.textContent = profile.phone;
-  els.phone.href = `tel:${profile.phone.replace(/[^+\d]/g, "")}`;
-  els.resume.textContent = `${profile.cvLabel} \u2197`;
-  els.resume.href = profile.cvUrl || "#contact";
-  els.resume.toggleAttribute("download", Boolean(profile.cvUrl && profile.cvUrl.toLowerCase().endsWith(".pdf")));
+  const pageName = { about: "About", contact: "Contact" }[document.body.dataset.page];
+  document.title = pageName ? `${pageName} - ${profile.name}` : `${profile.name} - ${profile.role}`;
+  if (els.navName) els.navName.textContent = profile.name;
+  if (els.artistRole) els.artistRole.textContent = profile.role;
+  if (els.siteTitle) els.siteTitle.textContent = profile.name;
+  if (els.statement) els.statement.textContent = profile.statement;
+  if (els.about) els.about.textContent = profile.about;
+  if (els.email) {
+    els.email.textContent = profile.email;
+    els.email.href = `mailto:${profile.email}`;
+  }
+  if (els.phone) {
+    els.phone.textContent = profile.phone;
+    els.phone.href = `tel:${profile.phone.replace(/[^+\d]/g, "")}`;
+  }
+  if (els.resume) {
+    els.resume.textContent = `${profile.cvLabel} \u2197`;
+    els.resume.href = profile.cvUrl || "contact.html";
+    els.resume.toggleAttribute("download", Boolean(profile.cvUrl && profile.cvUrl.toLowerCase().endsWith(".pdf")));
+  }
   renderSocialLinks();
   renderExperience();
   renderEducation();
@@ -230,6 +239,7 @@ function applyAppearance() {
 }
 
 function renderSocialLinks() {
+  if (!els.socialLinks) return;
   els.socialLinks.replaceChildren();
   [["Instagram", siteData.profile.instagram], ["LinkedIn", siteData.profile.linkedin]].forEach(([label, url]) => {
     if (!url) return;
@@ -251,6 +261,7 @@ function renderEducation() {
 }
 
 function renderTimeline(list, items) {
+  if (!list) return;
   list.replaceChildren();
   items.forEach((item) => {
     const row = document.createElement("li");
@@ -261,6 +272,7 @@ function renderTimeline(list, items) {
 }
 
 function renderSkills() {
+  if (!els.skills) return;
   els.skills.replaceChildren();
   siteData.skills.forEach((skill) => {
     const item = document.createElement("li");
@@ -270,6 +282,7 @@ function renderSkills() {
 }
 
 function renderRecognition() {
+  if (!els.recognition) return;
   els.recognition.replaceChildren();
   siteData.recognition.forEach((award) => {
     const item = document.createElement("li");
@@ -279,6 +292,7 @@ function renderRecognition() {
 }
 
 function renderFilters() {
+  if (!els.filters) return;
   els.filters.replaceChildren();
   const categories = getCategories();
   if (!categories.includes(selectedCategory)) selectedCategory = "All";
@@ -298,6 +312,7 @@ function renderFilters() {
 }
 
 function renderGallery() {
+  if (!els.gallery) return;
   els.gallery.replaceChildren();
   lightboxItems = siteData.artworks.filter((artwork) => selectedCategory === "All" || artwork.category === selectedCategory);
   if (!lightboxItems.length) {
@@ -326,6 +341,7 @@ function renderGallery() {
 }
 
 function openLightbox(index) {
+  if (!els.lightbox) return;
   lightboxIndex = index;
   lightboxMediaItems = getArtworkMedia(lightboxItems[lightboxIndex]);
   lightboxMediaIndex = 0;
@@ -340,7 +356,7 @@ function getArtworkMedia(artwork) {
 
 function showLightboxItem() {
   const artwork = lightboxItems[lightboxIndex];
-  if (!artwork) return;
+  if (!artwork || !els.lightboxImage) return;
   els.lightboxImage.src = lightboxMediaItems[lightboxMediaIndex] || imageSource(artwork);
   els.lightboxImage.alt = artwork.title;
   els.lightboxTitle.textContent = artwork.title;
@@ -363,7 +379,7 @@ function moveLightbox(direction) {
 }
 
 function setEditorMode() {
-  if (!EDITOR_MODE) return;
+  if (!EDITOR_MODE || !els.editorPanel || !els.editorForm) return;
   document.body.classList.add("editor-mode");
   els.editorPanel.hidden = false;
   fillProfileForm();
@@ -574,53 +590,190 @@ function resetData() {
   renderEditorArtworks();
 }
 
-document.querySelector("#close-lightbox").addEventListener("click", () => els.lightbox.close());
-document.querySelector("#previous-artwork").addEventListener("click", () => moveLightbox(-1));
-document.querySelector("#next-artwork").addEventListener("click", () => moveLightbox(1));
-els.lightbox.addEventListener("click", (event) => {
-  if (event.target === els.lightbox) els.lightbox.close();
-});
-document.querySelector("#open-about").addEventListener("click", () => els.aboutDialog.showModal());
-document.querySelector("#close-about").addEventListener("click", () => els.aboutDialog.close());
-els.aboutDialog.addEventListener("click", (event) => {
-  if (event.target === els.aboutDialog) els.aboutDialog.close();
-});
+function showPublishStatus(message, state = "") {
+  if (!els.publishStatus) return;
+  els.publishStatus.textContent = message;
+  els.publishStatus.hidden = false;
+  els.publishStatus.className = `publish-status${state ? ` is-${state}` : ""}`;
+}
+
+function slugify(value) {
+  const cleaned = String(value || "artwork")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return cleaned || "artwork";
+}
+
+function dataUrlDetails(value) {
+  const match = String(value || "").match(/^data:([\w/+.-]+);base64,([a-z0-9+/=\s]+)$/i);
+  if (!match) return null;
+  const extensions = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp",
+    "image/gif": "gif"
+  };
+  return { content: match[2].replace(/\s/g, ""), extension: extensions[match[1].toLowerCase()] || "png" };
+}
+
+function encodeTextForGitHub(value) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = "";
+  bytes.forEach((byte) => {
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary);
+}
+
+function githubHeaders(token) {
+  return {
+    Accept: "application/vnd.github+json",
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+    "X-GitHub-Api-Version": "2026-03-10"
+  };
+}
+
+async function githubRequest(url, token, options = {}) {
+  const response = await fetch(url, { ...options, headers: { ...githubHeaders(token), ...(options.headers || {}) } });
+  if (response.ok) return response.status === 204 ? null : response.json();
+  let message = `GitHub returned ${response.status}.`;
+  try {
+    const error = await response.json();
+    if (error.message) message = error.message;
+  } catch {
+    // The status code is enough when GitHub does not return JSON.
+  }
+  throw new Error(message);
+}
+
+async function getGitHubFileSha(owner, repo, branch, path, token) {
+  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path.split("/").map(encodeURIComponent).join("/")}?ref=${encodeURIComponent(branch)}`;
+  const response = await fetch(url, { headers: githubHeaders(token) });
+  if (response.status === 404) return null;
+  if (!response.ok) {
+    let message = `GitHub returned ${response.status}.`;
+    try {
+      const error = await response.json();
+      if (error.message) message = error.message;
+    } catch {
+      // The status code is enough when GitHub does not return JSON.
+    }
+    throw new Error(message);
+  }
+  return (await response.json()).sha;
+}
+
+async function saveGitHubFile(owner, repo, branch, path, content, token, message) {
+  const sha = await getGitHubFileSha(owner, repo, branch, path, token);
+  const endpoint = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path.split("/").map(encodeURIComponent).join("/")}`;
+  const body = { message, content, branch };
+  if (sha) body.sha = sha;
+  await githubRequest(endpoint, token, { method: "PUT", body: JSON.stringify(body) });
+}
+
+async function publishToGitHub() {
+  const owner = document.querySelector("#github-owner").value.trim();
+  const repo = document.querySelector("#github-repo").value.trim();
+  const branch = document.querySelector("#github-branch").value.trim() || "main";
+  const tokenInput = document.querySelector("#github-token");
+  const token = tokenInput.value.trim();
+  if (!owner || !repo || !token) {
+    showPublishStatus("Enter your GitHub account, repository, and publishing token first.", "error");
+    return;
+  }
+
+  els.publishButton.disabled = true;
+  showPublishStatus("Preparing your changes...");
+  try {
+    siteData = normaliseData(readEditorData());
+    const publishData = JSON.parse(JSON.stringify(siteData));
+    let uploadedImages = 0;
+
+    for (const artwork of publishData.artworks) {
+      const image = dataUrlDetails(artwork.image);
+      if (!image) continue;
+      const fileStem = slugify(artwork.id || artwork.title);
+      const path = `assets/projects/${fileStem}/${fileStem}.${image.extension}`;
+      showPublishStatus(`Uploading image ${uploadedImages + 1}...`);
+      await saveGitHubFile(owner, repo, branch, path, image.content, token, `Upload ${artwork.title || "artwork"}`);
+      artwork.image = path;
+      uploadedImages += 1;
+    }
+
+    showPublishStatus("Publishing your portfolio...");
+    const source = `// Generated by the portfolio editor. Replace this project's site-data.js with this file when publishing.\nwindow.PORTFOLIO_PUBLISHED_DATA = ${JSON.stringify(publishData, null, 2)};\n`;
+    await saveGitHubFile(owner, repo, branch, "site-data.js", encodeTextForGitHub(source), token, "Publish portfolio updates");
+
+    siteData = normaliseData(publishData);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+    renderSite();
+    fillProfileForm();
+    renderEditorArtworks();
+    tokenInput.value = "";
+    showPublishStatus(`Published${uploadedImages ? ` ${uploadedImages} image${uploadedImages === 1 ? "" : "s"} and` : ""} your portfolio. Your live site will refresh shortly.`, "success");
+  } catch (error) {
+    showPublishStatus(`Publish failed: ${error.message}`, "error");
+  } finally {
+    els.publishButton.disabled = false;
+  }
+}
+
+if (els.lightbox) {
+  document.querySelector("#close-lightbox").addEventListener("click", () => els.lightbox.close());
+  document.querySelector("#previous-artwork").addEventListener("click", () => moveLightbox(-1));
+  document.querySelector("#next-artwork").addEventListener("click", () => moveLightbox(1));
+  els.lightbox.addEventListener("click", (event) => {
+    if (event.target === els.lightbox) els.lightbox.close();
+  });
+}
 window.addEventListener("keydown", (event) => {
-  if (!els.lightbox.open) return;
+  if (!els.lightbox || !els.lightbox.open) return;
+  if (event.key === "Escape") {
+    els.lightbox.close();
+    return;
+  }
   if (event.key === "ArrowLeft") moveLightbox(-1);
   if (event.key === "ArrowRight") moveLightbox(1);
 });
 
-document.querySelector("#add-artwork").addEventListener("click", addArtwork);
-document.querySelector("#add-category").addEventListener("click", addCategory);
-document.querySelector("#new-category").addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    addCategory();
-  }
-});
-els.editorForm.addEventListener("submit", saveLocalData);
-document.querySelector("#export-data").addEventListener("click", downloadData);
-document.querySelector("#export-publish-file").addEventListener("click", downloadPublishFile);
-document.querySelector("#import-data").addEventListener("change", importData);
-document.querySelector("#reset-data").addEventListener("click", resetData);
-document.querySelectorAll(".style-choice").forEach((button) => {
-  button.addEventListener("click", () => {
-    siteData.appearance[button.dataset.styleGroup] = button.dataset.styleValue;
-    applyAppearance();
-    renderAppearanceEditor();
+if (els.editorForm) {
+  document.querySelector("#add-artwork").addEventListener("click", addArtwork);
+  document.querySelector("#add-category").addEventListener("click", addCategory);
+  document.querySelector("#new-category").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addCategory();
+    }
   });
-});
-document.querySelector("#edit-cv-upload").addEventListener("change", (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.addEventListener("load", () => {
-    document.querySelector("#edit-cv-url").value = reader.result;
+  els.editorForm.addEventListener("submit", saveLocalData);
+  els.publishButton.addEventListener("click", publishToGitHub);
+  document.querySelector("#export-data").addEventListener("click", downloadData);
+  document.querySelector("#export-publish-file").addEventListener("click", downloadPublishFile);
+  document.querySelector("#import-data").addEventListener("change", importData);
+  document.querySelector("#reset-data").addEventListener("click", resetData);
+  document.querySelectorAll(".style-choice").forEach((button) => {
+    button.addEventListener("click", () => {
+      siteData.appearance[button.dataset.styleGroup] = button.dataset.styleValue;
+      applyAppearance();
+      renderAppearanceEditor();
+    });
   });
-  reader.readAsDataURL(file);
-});
+  document.querySelector("#edit-cv-upload").addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      document.querySelector("#edit-cv-url").value = reader.result;
+    });
+    reader.readAsDataURL(file);
+  });
+}
 
 renderSite();
 setEditorMode();
-document.querySelector(".editor-entry").hidden = window.location.protocol !== "file:";
+document.querySelectorAll(".editor-entry").forEach((entry) => {
+  entry.hidden = window.location.protocol !== "file:";
+});

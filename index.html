@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Concept design and 2D art portfolio.">
   <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css?v=about-2">
+  <link rel="stylesheet" href="style.css?v=pages-1">
 </head>
 <body>
   <header class="site-header">
@@ -14,9 +14,9 @@
       <span id="nav-name">Kyle Zhen Yingjie</span>
     </a>
     <nav aria-label="Primary navigation">
-      <a href="#work">Work</a>
-      <button class="nav-button" id="open-about" type="button">About</button>
-      <a href="#contact">Contact</a>
+      <a class="is-current" href="index.html" aria-current="page">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
       <a class="editor-entry" href="index.html?edit=1">Edit portfolio</a>
     </nav>
   </header>
@@ -39,52 +39,6 @@
     </section>
 
   </main>
-
-  <dialog class="about-dialog" id="about-dialog" aria-labelledby="about-title">
-    <div class="about-dialog-inner section-shell">
-      <button class="icon-button about-dialog-close" id="close-about" type="button" aria-label="Close about">&times;</button>
-      <section class="about" id="about" aria-labelledby="about-title">
-      <div class="section-heading">
-        <p class="eyebrow">Profile</p>
-        <h2 id="about-title">About</h2>
-      </div>
-      <div class="about-grid">
-        <div>
-          <p class="about-copy" id="about-copy"></p>
-          <a class="resume-link" id="resume-link" href="assets/Kyle_Yingjie_Resume_2026.pdf">Download CV (PDF) <span aria-hidden="true">&nearr;</span></a>
-        </div>
-        <div class="detail-panel">
-          <h3>Experience</h3>
-          <ol class="experience-list" id="experience-list"></ol>
-        </div>
-      </div>
-      <div class="credentials-grid">
-        <section class="detail-panel" aria-labelledby="education-title">
-          <h3 id="education-title">Education</h3>
-          <ol class="experience-list" id="education-list"></ol>
-        </section>
-        <section class="detail-panel" aria-labelledby="skills-title">
-          <h3 id="skills-title">Skills &amp; Tools</h3>
-          <ul class="skills-list" id="skills-list"></ul>
-        </section>
-      </div>
-      <section class="detail-panel recognition-panel" aria-labelledby="recognition-title">
-        <h3 id="recognition-title">Recognition</h3>
-        <ol class="recognition-list" id="recognition-list"></ol>
-      </section>
-      </section>
-    </div>
-  </dialog>
-
-  <footer class="site-footer section-shell" id="contact">
-    <p class="eyebrow">Get in touch</p>
-    <div class="contact-details">
-      <a class="contact-email" id="contact-email" href="mailto:kyleyingjie@gmail.com">kyleyingjie@gmail.com</a>
-      <a class="contact-phone" id="contact-phone" href="tel:+6586123313">+65 8612 3313</a>
-    </div>
-    <div class="social-links" id="social-links"></div>
-    <p class="footer-note">For work enquiries, get in touch by email or phone.</p>
-  </footer>
 
   <dialog class="lightbox" id="lightbox" aria-label="Artwork preview">
     <button class="icon-button close-lightbox" id="close-lightbox" type="button" aria-label="Close artwork preview">&times;</button>
@@ -168,6 +122,15 @@
       </section>
       <section class="editor-section editor-actions">
         <button class="primary-button" type="submit">Save locally</button>
+        <button class="primary-button publish-button" id="publish-github" type="button">Publish live website</button>
+        <div class="github-publish-fields">
+          <label>GitHub account<input id="github-owner" value="kyleyingjie" autocapitalize="none" autocomplete="username" spellcheck="false"></label>
+          <label>Repository<input id="github-repo" value="kyleyingjie.github.io" autocapitalize="none" spellcheck="false"></label>
+          <label>Branch<input id="github-branch" value="main" autocapitalize="none" spellcheck="false"></label>
+          <label>GitHub publishing token<input id="github-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+          <a class="publish-token-link" href="https://github.com/settings/personal-access-tokens/new?name=Kyle%20Portfolio%20Publisher&amp;description=Publish%20Kyle%20Yingjie%20portfolio&amp;target_name=kyleyingjie&amp;expires_in=365&amp;contents=write" target="_blank" rel="noreferrer">Create publishing token</a>
+        </div>
+        <p class="publish-status" id="publish-status" role="status" aria-live="polite" hidden></p>
         <button class="secondary-button" id="export-data" type="button">Export site data</button>
         <button class="secondary-button" id="export-publish-file" type="button">Export publish file</button>
         <label class="secondary-button import-label">Import site data<input id="import-data" type="file" accept="application/json"></label>
@@ -189,7 +152,7 @@
     </article>
   </template>
 
-  <script src="site-data.js?v=about-2"></script>
-  <script src="script.js?v=about-2"></script>
+  <script src="site-data.js?v=pages-1"></script>
+  <script src="script.js?v=pages-1"></script>
 </body>
 </html>
