@@ -1,4 +1,4 @@
-const STORAGE_KEY = "mira-portfolio-site-data-v1";
+const STORAGE_KEY = "kyleyingjie-portfolio-site-data-v1";
 const EDITOR_MODE = new URLSearchParams(window.location.search).get("edit") === "1";
 const DEFAULT_CATEGORIES = ["Environment Concept Design", "Mobile Game UI", "2D Assets", "Character Art"];
 
@@ -10,20 +10,36 @@ const DEFAULT_SITE_DATA = {
   },
   categories: DEFAULT_CATEGORIES,
   profile: {
-    name: "Mira Lee",
-    role: "Designer & Concept Artist",
-    statement: "Worldbuilding, visual systems, and playful images for games and stories.",
-    about: "Mira is a concept designer and 2D artist focused on making imagined places feel tactile, legible, and alive. Her practice moves between early visual development, game interfaces, and the small material details that make a world worth exploring.",
-    email: "hello@miralee.art",
-    instagram: "https://instagram.com/",
-    linkedin: "https://linkedin.com/",
-    cvUrl: "#contact",
-    cvLabel: "CV available on request"
+    name: "Kyle Zhen Yingjie",
+    role: "2D Artist & Illustrator",
+    statement: "Visual development for games and animation.",
+    about: "Kyle is an artist and illustrator passionate about visual development for games and animation. His experience spans character, environment, and user-interface design for mobile games, with a focus on exploring new concepts and art techniques.",
+    email: "kyleyingjie@gmail.com",
+    phone: "+65 8612 3313",
+    instagram: "",
+    linkedin: "",
+    cvUrl: "assets/Resume_Kyle_Zhen_Yingjie.pdf",
+    cvLabel: "Download CV (PDF)"
   },
   experience: [
-    { years: "2023 - Now", role: "Independent concept designer", place: "Games, illustration, and visual development" },
-    { years: "2021 - 23", role: "Visual designer", place: "Rook Studio" },
-    { years: "2018 - 21", role: "2D artist", place: "Northwind Games" }
+    { years: "2020 - Present", role: "2D Artist", place: "Dynamite Games" },
+    { years: "Jun - Jul 2021", role: "Freelance Artist", place: "Iterative Collective" },
+    { years: "2019 - 2020", role: "Digital Artist", place: "Digital Mirage" }
+  ],
+  education: [
+    { years: "2017 - 2019", role: "Bachelor of Arts, Animation Art", place: "LASALLE College of the Arts - Second Class Honours (Upper Division)" }
+  ],
+  recognition: [
+    "National Youth Film Award 2020 - Best Art Direction Award (Individual)",
+    "Crowbar 2019 - Art Direction Gold Award (Team)",
+    "Crowbar 2019 - Animation Gold Award (Team)",
+    "Crowbar 2019 - Editing Silver Award (Team)",
+    "Crowbar 2019 - Cinematography Bronze Award (Team)",
+    "Cartoons Underground 2019 - Audience Choice and Special Mention (Team)",
+    "DigiCon6 Asia 2018 - Next Generation Award (Team)",
+    "Crowbar 2018 - Cinematography Silver Award (Team)",
+    "Crowbar 2018 - Animation Silver Award (Team)",
+    "Crowbar 2018 - Effects Bronze Award (Team)"
   ],
   artworks: [
     { id: "verdant", title: "Verdant Relay", category: "Environment Concept Design", placeholder: "verdant", aspect: "portrait" },
@@ -50,8 +66,11 @@ const els = {
   about: document.querySelector("#about-copy"),
   resume: document.querySelector("#resume-link"),
   email: document.querySelector("#contact-email"),
+  phone: document.querySelector("#contact-phone"),
   socialLinks: document.querySelector("#social-links"),
   experience: document.querySelector("#experience-list"),
+  education: document.querySelector("#education-list"),
+  recognition: document.querySelector("#recognition-list"),
   filters: document.querySelector("#filters"),
   gallery: document.querySelector("#gallery"),
   lightbox: document.querySelector("#lightbox"),
@@ -86,6 +105,8 @@ function normaliseData(rawData) {
     categories: normaliseCategories(rawData.categories, fallback.categories),
     profile: { ...fallback.profile, ...(rawData.profile || {}) },
     experience: Array.isArray(rawData.experience) ? rawData.experience : fallback.experience,
+    education: Array.isArray(rawData.education) ? rawData.education : fallback.education,
+    recognition: Array.isArray(rawData.recognition) ? rawData.recognition : fallback.recognition,
     artworks: Array.isArray(rawData.artworks) ? rawData.artworks : fallback.artworks
   };
 }
@@ -135,7 +156,7 @@ function imageSource(artwork) {
 function renderSite() {
   const { profile } = siteData;
   applyAppearance();
-  document.title = `${profile.name} — ${profile.role}`;
+  document.title = `${profile.name} - ${profile.role}`;
   els.navName.textContent = profile.name;
   els.artistRole.textContent = profile.role;
   els.siteTitle.textContent = profile.name;
@@ -143,11 +164,15 @@ function renderSite() {
   els.about.textContent = profile.about;
   els.email.textContent = profile.email;
   els.email.href = `mailto:${profile.email}`;
+  els.phone.textContent = profile.phone;
+  els.phone.href = `tel:${profile.phone.replace(/[^+\d]/g, "")}`;
   els.resume.textContent = `${profile.cvLabel} \u2197`;
   els.resume.href = profile.cvUrl || "#contact";
   els.resume.toggleAttribute("download", Boolean(profile.cvUrl && profile.cvUrl.toLowerCase().endsWith(".pdf")));
   renderSocialLinks();
   renderExperience();
+  renderEducation();
+  renderRecognition();
   renderFilters();
   renderGallery();
 }
@@ -173,11 +198,28 @@ function renderSocialLinks() {
 }
 
 function renderExperience() {
-  els.experience.replaceChildren();
-  siteData.experience.forEach((item) => {
+  renderTimeline(els.experience, siteData.experience);
+}
+
+function renderEducation() {
+  renderTimeline(els.education, siteData.education);
+}
+
+function renderTimeline(list, items) {
+  list.replaceChildren();
+  items.forEach((item) => {
     const row = document.createElement("li");
     row.innerHTML = `<time>${escapeXml(item.years)}</time><div><strong>${escapeXml(item.role)}</strong><span>${escapeXml(item.place)}</span></div>`;
-    els.experience.append(row);
+    list.append(row);
+  });
+}
+
+function renderRecognition() {
+  els.recognition.replaceChildren();
+  siteData.recognition.forEach((award) => {
+    const item = document.createElement("li");
+    item.textContent = award;
+    els.recognition.append(item);
   });
 }
 
@@ -292,6 +334,7 @@ function fillProfileForm() {
   document.querySelector("#edit-statement").value = profile.statement;
   document.querySelector("#edit-about").value = profile.about;
   document.querySelector("#edit-email").value = profile.email;
+  document.querySelector("#edit-phone").value = profile.phone;
   document.querySelector("#edit-instagram").value = profile.instagram;
   document.querySelector("#edit-linkedin").value = profile.linkedin;
   document.querySelector("#edit-cv-url").value = profile.cvUrl;
@@ -336,6 +379,7 @@ function readEditorData() {
     statement: document.querySelector("#edit-statement").value.trim(),
     about: document.querySelector("#edit-about").value.trim(),
     email: document.querySelector("#edit-email").value.trim(),
+    phone: document.querySelector("#edit-phone").value.trim(),
     instagram: document.querySelector("#edit-instagram").value.trim(),
     linkedin: document.querySelector("#edit-linkedin").value.trim(),
     cvUrl: document.querySelector("#edit-cv-url").value.trim(),
@@ -352,7 +396,15 @@ function readEditorData() {
       image: card.querySelector(".artwork-image-input").value.trim()
     };
   });
-  return { appearance: { ...siteData.appearance }, categories: [...siteData.categories], profile, experience: siteData.experience, artworks };
+  return {
+    appearance: { ...siteData.appearance },
+    categories: [...siteData.categories],
+    profile,
+    experience: siteData.experience,
+    education: siteData.education,
+    recognition: siteData.recognition,
+    artworks
+  };
 }
 
 function addArtwork() {
@@ -494,3 +546,4 @@ document.querySelector("#edit-cv-upload").addEventListener("change", (event) => 
 
 renderSite();
 setEditorMode();
+document.querySelector(".editor-entry").hidden = window.location.protocol !== "file:";
