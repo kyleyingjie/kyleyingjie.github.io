@@ -72,7 +72,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
   "artworks": [
     {
       "id": "for-fun-challenge",
-      "title": "For Fun Challenge",
+      "title": "MLBB Challenge",
       "category": "Personal Project",
       "aspect": "landscape",
       "images": [
