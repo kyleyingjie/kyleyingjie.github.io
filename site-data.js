@@ -199,6 +199,21 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/game-ui-design/UI - Project Ricochet 2.jpg",
         "assets/projects/game-ui-design/UI - Shop01.jpg"
       ]
+    },
+    {
+      "id": "fan-art",
+      "title": "Fan Art",
+      "category": "Personal Project",
+      "aspect": "portrait",
+      "image": "assets/projects/fan-art/splash 0111.jpg",
+      "images": [
+        "assets/projects/fan-art/splash 0111.jpg",
+        "assets/projects/fan-art/splash 0222.jpg",
+        "assets/projects/fan-art/viego.jpg",
+        "assets/projects/fan-art/CLASS02b copy3.jpg",
+        "assets/projects/fan-art/Elf_in_forest_splash_art_001.jpg",
+        "assets/projects/fan-art/bust.jpeg"
+      ]
     }
   ]
 };
