@@ -107,6 +107,19 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/elf-forager/elf-forager_05.jpg",
         "assets/projects/elf-forager/elf-pots_01.jpg"
       ]
+    },
+    {
+      "id": "survivor-pack",
+      "title": "Survivor Pack - Art Test",
+      "category": "Personal Project",
+      "aspect": "portrait",
+      "image": "assets/projects/survivor-pack/Art-test_KyleYingjie_02.jpg",
+      "images": [
+        "assets/projects/survivor-pack/Art-test_KyleYingjie.jpg",
+        "assets/projects/survivor-pack/Art-test_KyleYingjie_01.jpg",
+        "assets/projects/survivor-pack/Art-test_KyleYingjie_02.jpg",
+        "assets/projects/survivor-pack/art-test-02_02.jpg"
+      ]
     }
   ]
 };
