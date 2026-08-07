@@ -136,6 +136,19 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/giant-armor-glove/Character_design_with_oversized_gauntlet.jpg",
         "assets/projects/giant-armor-glove/Giant_armor_glove_design_05.jpg"
       ]
+    },
+    {
+      "id": "klaus-environment",
+      "title": "Klaus Environment Design",
+      "category": "Personal Project",
+      "aspect": "landscape",
+      "image": "assets/projects/klaus-environment/Group 4.jpg",
+      "images": [
+        "assets/projects/klaus-environment/Klaus_animated_film_environment_001.jpg",
+        "assets/projects/klaus-environment/Group 4.jpg",
+        "assets/projects/klaus-environment/Group 2.jpg",
+        "assets/projects/klaus-environment/Group 3.jpg"
+      ]
     }
   ]
 };
