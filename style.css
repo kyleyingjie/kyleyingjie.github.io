@@ -160,7 +160,10 @@ html.lightbox-open, body.lightbox-open { overflow: hidden; }
 .github-publish-fields { display: grid; gap: 2px; padding: 14px; border: 1px solid var(--line); border-radius: 4px; background: #fbfaf7; }
 .github-publish-fields label { margin-bottom: 10px !important; }
 .github-publish-fields label:last-of-type { margin-bottom: 8px !important; }
+.github-publish-fields .remember-publish-label { display: flex; grid-template-columns: auto 1fr; align-items: center; gap: 8px; margin: 3px 0 8px !important; cursor: pointer; }
+.remember-publish-label input { width: auto; margin: 0; accent-color: var(--accent); }
 .publish-token-link { color: var(--accent); font-size: 0.88rem; font-weight: 650; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.forget-publish-access { justify-self: start; min-height: 30px; padding: 3px 0; font-size: 0.82rem; }
 .publish-status { margin: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); color: var(--ink); font-size: 0.9rem; }
 .publish-status.is-error { border-color: #b55d5d; color: #8e2525; }
 .publish-status.is-success { border-color: var(--accent); color: var(--accent); }

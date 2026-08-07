@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Concept design and 2D art portfolio.">
   <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css?v=pages-1">
+  <link rel="stylesheet" href="style.css?v=editor-remember-1">
 </head>
 <body>
   <header class="site-header">
@@ -174,7 +174,9 @@
           <label>Repository<input id="github-repo" value="kyleyingjie.github.io" autocapitalize="none" spellcheck="false"></label>
           <label>Branch<input id="github-branch" value="main" autocapitalize="none" spellcheck="false"></label>
           <label>GitHub publishing token<input id="github-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+          <label class="remember-publish-label"><input id="remember-github-token" type="checkbox"> Remember access on this device</label>
           <a class="publish-token-link" href="https://github.com/settings/personal-access-tokens/new?name=Kyle%20Portfolio%20Publisher&amp;description=Publish%20Kyle%20Yingjie%20portfolio&amp;target_name=kyleyingjie&amp;expires_in=365&amp;contents=write" target="_blank" rel="noreferrer">Create publishing token</a>
+          <button class="quiet-button forget-publish-access" id="forget-github-token" type="button">Forget saved access</button>
         </div>
         <button class="primary-button publish-button" id="publish-github" type="button">Publish live website</button>
         <p class="publish-status" id="publish-status" role="status" aria-live="polite" hidden></p>
@@ -199,7 +201,7 @@
     </article>
   </template>
 
-  <script src="site-data.js?v=pages-1"></script>
-  <script src="script.js?v=pages-1"></script>
+  <script src="site-data.js?v=editor-remember-1"></script>
+  <script src="script.js?v=editor-remember-1"></script>
 </body>
 </html>

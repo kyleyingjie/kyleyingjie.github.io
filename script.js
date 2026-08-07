@@ -1,4 +1,5 @@
 const STORAGE_KEY = "kyleyingjie-portfolio-site-data-v2";
+const PUBLISH_TOKEN_STORAGE_KEY = "kyleyingjie-github-publish-token-v1";
 const EDITOR_MODE = new URLSearchParams(window.location.search).get("edit") === "1";
 const DEFAULT_CATEGORIES = ["Personal Project"];
 
@@ -162,7 +163,10 @@ const els = {
   artworkList: document.querySelector("#editor-artwork-list"),
   artworkTemplate: document.querySelector("#artwork-editor-template"),
   publishButton: document.querySelector("#publish-github"),
-  publishStatus: document.querySelector("#publish-status")
+  publishStatus: document.querySelector("#publish-status"),
+  githubToken: document.querySelector("#github-token"),
+  rememberGithubToken: document.querySelector("#remember-github-token"),
+  forgetGithubToken: document.querySelector("#forget-github-token")
 };
 
 function cloneDefaultData() {
@@ -719,6 +723,30 @@ function resetData() {
   renderEditorArtworks();
 }
 
+function restorePublishToken() {
+  if (!els.githubToken) return;
+  try {
+    const savedToken = localStorage.getItem(PUBLISH_TOKEN_STORAGE_KEY);
+    if (savedToken) {
+      els.githubToken.value = savedToken;
+      els.rememberGithubToken.checked = true;
+    }
+  } catch {
+    // Some privacy modes block local browser storage; manual entry still works.
+  }
+}
+
+function forgetPublishToken() {
+  try {
+    localStorage.removeItem(PUBLISH_TOKEN_STORAGE_KEY);
+  } catch {
+    // The field is still cleared if storage is unavailable.
+  }
+  els.githubToken.value = "";
+  els.rememberGithubToken.checked = false;
+  showPublishStatus("Saved publishing access removed from this device.", "success");
+}
+
 function showPublishStatus(message, state = "") {
   if (!els.publishStatus) return;
   els.publishStatus.textContent = message;
@@ -814,6 +842,13 @@ async function publishToGitHub() {
     return;
   }
 
+  try {
+    if (els.rememberGithubToken.checked) localStorage.setItem(PUBLISH_TOKEN_STORAGE_KEY, token);
+    else localStorage.removeItem(PUBLISH_TOKEN_STORAGE_KEY);
+  } catch {
+    // Publishing continues even when this browser does not allow storage.
+  }
+
   els.publishButton.disabled = true;
   showPublishStatus("Preparing your changes...");
   try {
@@ -845,7 +880,7 @@ async function publishToGitHub() {
   } catch (error) {
     showPublishStatus(`Publish failed: ${error.message}`, "error");
   } finally {
-    tokenInput.value = "";
+    if (!els.rememberGithubToken.checked) tokenInput.value = "";
     els.publishButton.disabled = false;
   }
 }
@@ -868,6 +903,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 if (els.editorForm) {
+  restorePublishToken();
   document.querySelector("#add-artwork").addEventListener("click", addArtwork);
   document.querySelector("#add-category").addEventListener("click", addCategory);
   document.querySelector("#new-category").addEventListener("keydown", (event) => {
@@ -878,6 +914,7 @@ if (els.editorForm) {
   });
   els.editorForm.addEventListener("submit", saveLocalData);
   els.publishButton.addEventListener("click", publishToGitHub);
+  els.forgetGithubToken.addEventListener("click", forgetPublishToken);
   document.querySelector("#export-data").addEventListener("click", downloadData);
   document.querySelector("#export-publish-file").addEventListener("click", downloadPublishFile);
   document.querySelector("#import-data").addEventListener("change", importData);
