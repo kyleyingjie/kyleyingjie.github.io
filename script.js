@@ -123,6 +123,9 @@ let siteData = loadSiteData();
 let selectedCategory = "All";
 let lightboxItems = [];
 let lightboxIndex = 0;
+let galleryCards = [];
+let galleryColumnCount = 0;
+let galleryRelayoutFrame = 0;
 
 const els = {
   navName: document.querySelector("#nav-name"),
@@ -373,14 +376,60 @@ function renderFilters() {
   });
 }
 
+function getGalleryColumnCount() {
+  const width = els.gallery?.clientWidth || window.innerWidth;
+  if (width <= 560) return 1;
+  if (width <= 850) return 2;
+  return 3;
+}
+
+function getArtworkRatio(artwork, image) {
+  if (image && image.naturalWidth && image.naturalHeight) return image.naturalHeight / image.naturalWidth;
+  if (artwork.aspect === "landscape") return 0.624;
+  if (artwork.aspect === "portrait") return 1.389;
+  return 1;
+}
+
+function layoutGallery() {
+  if (!els.gallery || !galleryCards.length) return;
+  const columns = [...els.gallery.querySelectorAll(".gallery-column")];
+  if (!columns.length) return;
+  columns.forEach((column) => column.replaceChildren());
+  const heights = columns.map(() => 0);
+
+  galleryCards.forEach((card) => {
+    const image = card.querySelector("img");
+    const columnIndex = heights.indexOf(Math.min(...heights));
+    columns[columnIndex].append(card);
+    heights[columnIndex] += getArtworkRatio(card.artwork, image) + 0.05;
+  });
+}
+
+function scheduleGalleryRelayout() {
+  if (galleryRelayoutFrame) cancelAnimationFrame(galleryRelayoutFrame);
+  galleryRelayoutFrame = requestAnimationFrame(() => {
+    galleryRelayoutFrame = 0;
+    layoutGallery();
+  });
+}
+
 function renderGallery() {
   if (!els.gallery) return;
   els.gallery.replaceChildren();
+  galleryCards = [];
+  galleryColumnCount = getGalleryColumnCount();
+  els.gallery.style.gridTemplateColumns = `repeat(${galleryColumnCount}, minmax(0, 1fr))`;
   lightboxItems = siteData.artworks.filter((artwork) => selectedCategory === "All" || artwork.category === selectedCategory);
   if (!lightboxItems.length) {
     els.gallery.innerHTML = '<p class="empty-gallery">No artwork in this category yet.</p>';
     return;
   }
+  const columns = Array.from({ length: galleryColumnCount }, () => {
+    const column = document.createElement("div");
+    column.className = "gallery-column";
+    return column;
+  });
+  els.gallery.append(...columns);
   lightboxItems.forEach((artwork, index) => {
     const card = document.createElement("button");
     const image = document.createElement("img");
@@ -389,17 +438,22 @@ function renderGallery() {
     const category = document.createElement("span");
     card.type = "button";
     card.className = "artwork-card";
+    card.artwork = artwork;
     image.src = imageSource(artwork);
     image.alt = artwork.title;
     image.loading = "lazy";
+    image.addEventListener("load", scheduleGalleryRelayout);
+    image.addEventListener("error", scheduleGalleryRelayout);
     meta.className = "artwork-meta";
     title.textContent = artwork.title;
     category.textContent = artwork.category;
     meta.append(title, category);
     card.append(image, meta);
     card.addEventListener("click", () => openLightbox(index));
-    els.gallery.append(card);
+    galleryCards.push(card);
+    columns[0].append(card);
   });
+  layoutGallery();
 }
 
 function openLightbox(index) {
@@ -1030,6 +1084,17 @@ if (els.editorForm) {
     reader.readAsDataURL(file);
   });
 }
+
+let galleryResizeTimer = 0;
+window.addEventListener("resize", () => {
+  if (!els.gallery) return;
+  clearTimeout(galleryResizeTimer);
+  galleryResizeTimer = window.setTimeout(() => {
+    const nextColumnCount = getGalleryColumnCount();
+    if (nextColumnCount !== galleryColumnCount) renderGallery();
+    else scheduleGalleryRelayout();
+  }, 120);
+});
 
 renderSite();
 setEditorMode();
