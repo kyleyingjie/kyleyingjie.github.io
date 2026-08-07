@@ -49,6 +49,8 @@ a { color: inherit; }
 nav { gap: 24px; }
 nav a, .social-links a { color: var(--muted); text-decoration: none; }
 nav a:hover, nav a:focus-visible, .social-links a:hover, .social-links a:focus-visible { color: var(--accent); }
+.nav-button { padding: 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.nav-button:hover, .nav-button:focus-visible { color: var(--accent); }
 .editor-entry { padding: 7px 11px; border: 1px solid var(--accent); border-radius: 3px; color: var(--accent) !important; font-weight: 650; }
 .editor-entry:hover, .editor-entry:focus-visible { background: var(--accent); color: var(--accent-ink) !important; }
 
@@ -91,8 +93,18 @@ h3 { margin: 0; font-size: 1rem; }
 .experience-list time { color: var(--muted); }
 .experience-list strong, .experience-list span { display: block; }
 .experience-list span { color: var(--muted); }
+.timeline-summary { margin: 8px 0 0; color: #3c403b; font-size: 0.92rem; }
 .recognition-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .recognition-list li { padding: 12px 0; border-bottom: 1px solid var(--line); color: #3c403b; }
+.skills-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.skills-list li { padding: 8px 10px; border: 1px solid var(--line); border-radius: 3px; background: #fbfaf7; color: #3c403b; }
+.recognition-panel { padding-top: 72px; }
+
+.about-dialog { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: var(--paper); color: var(--ink); }
+.about-dialog::backdrop { background: rgba(23, 25, 22, 0.42); }
+.about-dialog-inner { position: relative; min-height: 100%; padding-top: 96px; padding-bottom: 72px; }
+.about-dialog .about { padding: 0; border: 0; }
+.about-dialog-close { position: fixed; top: 22px; right: max(24px, calc((100vw - 1320px) / 2)); z-index: 1; }
 
 .site-footer { padding-top: 72px; padding-bottom: 54px; border-top: 1px solid var(--line); }
 .contact-details { display: grid; gap: 14px; margin-bottom: 38px; }
@@ -165,6 +177,7 @@ body.editor-mode .site-header { padding-right: calc(min(100%, 500px) + max(24px,
 @media (max-width: 850px) {
   .section-heading, .about-grid, .credentials-grid { grid-template-columns: 1fr; gap: 28px; }
   .credentials-grid { padding-top: 48px; }
+  .recognition-panel { padding-top: 48px; }
   .section-heading { margin-bottom: 30px; }
   .gallery { columns: 2 220px; }
   body.editor-mode { padding-right: 0; }

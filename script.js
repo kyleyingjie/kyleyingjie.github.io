@@ -1,4 +1,4 @@
-const STORAGE_KEY = "kyleyingjie-portfolio-site-data-v1";
+const STORAGE_KEY = "kyleyingjie-portfolio-site-data-v2";
 const EDITOR_MODE = new URLSearchParams(window.location.search).get("edit") === "1";
 const DEFAULT_CATEGORIES = ["Personal Project"];
 
@@ -11,30 +11,51 @@ const DEFAULT_SITE_DATA = {
   categories: DEFAULT_CATEGORIES,
   profile: {
     name: "Kyle Zhen Yingjie",
-    role: "2D Artist & Illustrator",
-    statement: "Visual development for games and animation.",
-    about: "Kyle is an artist and illustrator passionate about visual development for games and animation. His experience spans character, environment, and user-interface design for mobile games, with a focus on exploring new concepts and art techniques.",
+    role: "Visual Designer & 2D Artist",
+    statement: "Visual and UI design for digital games.",
+    about: "Detail-oriented, adaptable, and collaborative visual designer with experience creating visual and UI content for digital games.",
     email: "kyleyingjie@gmail.com",
     phone: "+65 8612 3313",
     instagram: "",
     linkedin: "",
-    cvUrl: "assets/Resume_Kyle_Zhen_Yingjie.pdf",
+    cvUrl: "assets/Kyle_Yingjie_Resume_2026.pdf",
     cvLabel: "Download CV (PDF)"
   },
   experience: [
-    { years: "2020 - Present", role: "2D Artist", place: "Dynamite Games" },
-    { years: "Jun - Jul 2021", role: "Freelance Artist", place: "Iterative Collective" },
-    { years: "2019 - 2020", role: "Digital Artist", place: "Digital Mirage" }
+    {
+      years: "Aug 2020 - Mar 2026",
+      role: "2D Artist",
+      place: "Dynamite Games, Singapore",
+      summary: "Created characters, environments, backgrounds, visual effects, UI, and menus for more than 10 launched mobile games."
+    },
+    {
+      years: "Jun - Jul 2021",
+      role: "Freelance Visual Designer",
+      place: "Iterative Collective, Singapore",
+      summary: "Led visual development for Kungfu Dash, covering character design, art direction, animation, and UI/UX."
+    },
+    {
+      years: "Aug 2019 - Aug 2020",
+      role: "Digital Artist",
+      place: "Digital Mirage, Singapore",
+      summary: "Produced photorealistic client visuals from 3D renders through matte painting, digital imaging, and color grading."
+    }
   ],
   education: [
-    { years: "2017 - 2019", role: "Bachelor of Arts, Animation Art", place: "LASALLE College of the Arts - Second Class Honours (Upper Division)" }
+    { years: "Jul 2017 - May 2019", role: "Bachelor of Arts (Animation Art)", place: "LASALLE College of the Arts, Singapore - Second Class Honours (Upper Division)" },
+    { years: "2011 - 2012", role: "A-Levels", place: "Catholic Junior College, Singapore" }
+  ],
+  skills: [
+    "Illustration",
+    "UI Design",
+    "Adobe Photoshop",
+    "Midjourney",
+    "Stable Diffusion",
+    "Runway"
   ],
   recognition: [
-    "National Youth Film Award 2020 - Best Art Direction Award (Individual)",
-    "Crowbar 2019 - Art Direction Gold Award (Team)",
-    "Crowbar 2019 - Animation Gold Award (Team)",
-    "Crowbar 2019 - Editing Silver Award (Team)",
-    "Crowbar 2019 - Cinematography Bronze Award (Team)",
+    "National Youth Film Award 2020 - Best Art Direction (Individual)",
+    "Crowbar 2019 - Art Direction Gold, Animation Gold, Editing Silver, Cinematography Bronze (Team)",
     "Cartoons Underground 2019 - Audience Choice and Special Mention (Team)",
     "DigiCon6 Asia 2018 - Next Generation Award (Team)",
     "Crowbar 2018 - Cinematography Silver Award (Team)",
@@ -89,7 +110,9 @@ const els = {
   socialLinks: document.querySelector("#social-links"),
   experience: document.querySelector("#experience-list"),
   education: document.querySelector("#education-list"),
+  skills: document.querySelector("#skills-list"),
   recognition: document.querySelector("#recognition-list"),
+  aboutDialog: document.querySelector("#about-dialog"),
   filters: document.querySelector("#filters"),
   gallery: document.querySelector("#gallery"),
   lightbox: document.querySelector("#lightbox"),
@@ -125,6 +148,7 @@ function normaliseData(rawData) {
     profile: { ...fallback.profile, ...(rawData.profile || {}) },
     experience: Array.isArray(rawData.experience) ? rawData.experience : fallback.experience,
     education: Array.isArray(rawData.education) ? rawData.education : fallback.education,
+    skills: Array.isArray(rawData.skills) ? rawData.skills : fallback.skills,
     recognition: Array.isArray(rawData.recognition) ? rawData.recognition : fallback.recognition,
     artworks: Array.isArray(rawData.artworks) ? rawData.artworks : fallback.artworks
   };
@@ -192,6 +216,7 @@ function renderSite() {
   renderSocialLinks();
   renderExperience();
   renderEducation();
+  renderSkills();
   renderRecognition();
   renderFilters();
   renderGallery();
@@ -229,8 +254,18 @@ function renderTimeline(list, items) {
   list.replaceChildren();
   items.forEach((item) => {
     const row = document.createElement("li");
-    row.innerHTML = `<time>${escapeXml(item.years)}</time><div><strong>${escapeXml(item.role)}</strong><span>${escapeXml(item.place)}</span></div>`;
+    const summary = item.summary ? `<p class="timeline-summary">${escapeXml(item.summary)}</p>` : "";
+    row.innerHTML = `<time>${escapeXml(item.years)}</time><div><strong>${escapeXml(item.role)}</strong><span>${escapeXml(item.place)}</span>${summary}</div>`;
     list.append(row);
+  });
+}
+
+function renderSkills() {
+  els.skills.replaceChildren();
+  siteData.skills.forEach((skill) => {
+    const item = document.createElement("li");
+    item.textContent = skill;
+    els.skills.append(item);
   });
 }
 
@@ -438,6 +473,7 @@ function readEditorData() {
     profile,
     experience: siteData.experience,
     education: siteData.education,
+    skills: siteData.skills,
     recognition: siteData.recognition,
     artworks
   };
@@ -543,6 +579,11 @@ document.querySelector("#previous-artwork").addEventListener("click", () => move
 document.querySelector("#next-artwork").addEventListener("click", () => moveLightbox(1));
 els.lightbox.addEventListener("click", (event) => {
   if (event.target === els.lightbox) els.lightbox.close();
+});
+document.querySelector("#open-about").addEventListener("click", () => els.aboutDialog.showModal());
+document.querySelector("#close-about").addEventListener("click", () => els.aboutDialog.close());
+els.aboutDialog.addEventListener("click", (event) => {
+  if (event.target === els.aboutDialog) els.aboutDialog.close();
 });
 window.addEventListener("keydown", (event) => {
   if (!els.lightbox.open) return;
