@@ -174,12 +174,14 @@ function cloneDefaultData() {
 }
 
 function loadSiteData() {
+  const published = window.PORTFOLIO_PUBLISHED_DATA ? normaliseData(window.PORTFOLIO_PUBLISHED_DATA) : null;
+  if (!EDITOR_MODE) return published || cloneDefaultData();
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) return normaliseData(JSON.parse(stored));
-    return window.PORTFOLIO_PUBLISHED_DATA ? normaliseData(window.PORTFOLIO_PUBLISHED_DATA) : cloneDefaultData();
+    return published || cloneDefaultData();
   } catch {
-    return window.PORTFOLIO_PUBLISHED_DATA ? normaliseData(window.PORTFOLIO_PUBLISHED_DATA) : cloneDefaultData();
+    return published || cloneDefaultData();
   }
 }
 
