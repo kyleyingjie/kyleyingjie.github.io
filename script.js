@@ -95,8 +95,6 @@ let siteData = loadSiteData();
 let selectedCategory = "All";
 let lightboxItems = [];
 let lightboxIndex = 0;
-let lightboxMediaItems = [];
-let lightboxMediaIndex = 0;
 
 const els = {
   navName: document.querySelector("#nav-name"),
@@ -116,7 +114,7 @@ const els = {
   filters: document.querySelector("#filters"),
   gallery: document.querySelector("#gallery"),
   lightbox: document.querySelector("#lightbox"),
-  lightboxImage: document.querySelector("#lightbox-image"),
+  lightboxImages: document.querySelector("#lightbox-images"),
   lightboxTitle: document.querySelector("#lightbox-title"),
   lightboxCategory: document.querySelector("#lightbox-category"),
   editorPanel: document.querySelector("#editor-panel"),
@@ -343,10 +341,9 @@ function renderGallery() {
 function openLightbox(index) {
   if (!els.lightbox) return;
   lightboxIndex = index;
-  lightboxMediaItems = getArtworkMedia(lightboxItems[lightboxIndex]);
-  lightboxMediaIndex = 0;
-  showLightboxItem();
+  renderLightboxProject();
   if (!els.lightbox.open) els.lightbox.showModal();
+  els.lightbox.scrollTo({ top: 0 });
 }
 
 function getArtworkMedia(artwork) {
@@ -354,28 +351,19 @@ function getArtworkMedia(artwork) {
   return [imageSource(artwork)];
 }
 
-function showLightboxItem() {
+function renderLightboxProject() {
   const artwork = lightboxItems[lightboxIndex];
-  if (!artwork || !els.lightboxImage) return;
-  els.lightboxImage.src = lightboxMediaItems[lightboxMediaIndex] || imageSource(artwork);
-  els.lightboxImage.alt = artwork.title;
+  if (!artwork || !els.lightboxImages) return;
   els.lightboxTitle.textContent = artwork.title;
-  els.lightboxCategory.textContent = lightboxMediaItems.length > 1
-    ? `${artwork.category} - ${lightboxMediaIndex + 1} / ${lightboxMediaItems.length}`
-    : artwork.category;
-}
-
-function moveLightbox(direction) {
-  if (!lightboxItems.length) return;
-  if (lightboxMediaItems.length > 1) {
-    lightboxMediaIndex = (lightboxMediaIndex + direction + lightboxMediaItems.length) % lightboxMediaItems.length;
-    showLightboxItem();
-    return;
-  }
-  lightboxIndex = (lightboxIndex + direction + lightboxItems.length) % lightboxItems.length;
-  lightboxMediaItems = getArtworkMedia(lightboxItems[lightboxIndex]);
-  lightboxMediaIndex = 0;
-  showLightboxItem();
+  els.lightboxCategory.textContent = artwork.category;
+  els.lightboxImages.replaceChildren();
+  getArtworkMedia(artwork).forEach((source, mediaIndex) => {
+    const image = document.createElement("img");
+    image.src = source;
+    image.alt = `${artwork.title} - image ${mediaIndex + 1}`;
+    image.loading = mediaIndex < 2 ? "eager" : "lazy";
+    els.lightboxImages.append(image);
+  });
 }
 
 function setEditorMode() {
@@ -723,8 +711,6 @@ async function publishToGitHub() {
 
 if (els.lightbox) {
   document.querySelector("#close-lightbox").addEventListener("click", () => els.lightbox.close());
-  document.querySelector("#previous-artwork").addEventListener("click", () => moveLightbox(-1));
-  document.querySelector("#next-artwork").addEventListener("click", () => moveLightbox(1));
   els.lightbox.addEventListener("click", (event) => {
     if (event.target === els.lightbox) els.lightbox.close();
   });
@@ -733,10 +719,7 @@ window.addEventListener("keydown", (event) => {
   if (!els.lightbox || !els.lightbox.open) return;
   if (event.key === "Escape") {
     els.lightbox.close();
-    return;
   }
-  if (event.key === "ArrowLeft") moveLightbox(-1);
-  if (event.key === "ArrowRight") moveLightbox(1);
 });
 
 if (els.editorForm) {

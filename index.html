@@ -42,15 +42,13 @@
 
   <dialog class="lightbox" id="lightbox" aria-label="Artwork preview">
     <button class="icon-button close-lightbox" id="close-lightbox" type="button" aria-label="Close artwork preview">&times;</button>
-    <button class="icon-button previous-artwork" id="previous-artwork" type="button" aria-label="Previous artwork">&larr;</button>
-    <figure>
-      <img id="lightbox-image" src="" alt="">
-      <figcaption>
-        <span id="lightbox-title"></span>
-        <span id="lightbox-category"></span>
-      </figcaption>
-    </figure>
-    <button class="icon-button next-artwork" id="next-artwork" type="button" aria-label="Next artwork">&rarr;</button>
+    <div class="lightbox-project">
+      <header class="lightbox-heading">
+        <p class="eyebrow" id="lightbox-category"></p>
+        <h2 id="lightbox-title"></h2>
+      </header>
+      <div class="lightbox-images" id="lightbox-images"></div>
+    </div>
   </dialog>
 
   <aside class="editor-panel" id="editor-panel" aria-labelledby="editor-title" hidden>
