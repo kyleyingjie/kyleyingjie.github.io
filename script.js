@@ -31,7 +31,6 @@ const DEFAULT_SITE_DATA = {
       title: "Kyle Zhen Yingjie",
       intro: "Visual and UI design for digital games.",
       linkLabel: "Selected work",
-      sectionEyebrow: "Selected projects",
       sectionTitle: "Work"
     },
     about: {
@@ -131,7 +130,6 @@ const els = {
   siteTitle: document.querySelector("#site-title"),
   statement: document.querySelector("#artist-statement"),
   workLinkLabel: document.querySelector("#work-link-label"),
-  workSectionEyebrow: document.querySelector("#work-section-eyebrow"),
   workSectionTitle: document.querySelector("#work-title"),
   about: document.querySelector("#about-copy"),
   aboutEyebrow: document.querySelector("#about-eyebrow"),
@@ -255,7 +253,6 @@ function renderSite() {
   if (els.siteTitle) els.siteTitle.textContent = pages.work.title;
   if (els.statement) els.statement.textContent = pages.work.intro;
   if (els.workLinkLabel) els.workLinkLabel.textContent = pages.work.linkLabel;
-  if (els.workSectionEyebrow) els.workSectionEyebrow.textContent = pages.work.sectionEyebrow;
   if (els.workSectionTitle) els.workSectionTitle.textContent = pages.work.sectionTitle;
   if (els.about) els.about.textContent = profile.about;
   if (els.aboutEyebrow) els.aboutEyebrow.textContent = pages.about.eyebrow;
@@ -419,7 +416,6 @@ function pageDefaults(profile) {
       title: profile.name,
       intro: profile.statement,
       linkLabel: "Selected work",
-      sectionEyebrow: "Selected projects",
       sectionTitle: "Work"
     },
     about: {
@@ -525,7 +521,6 @@ function fillProfileForm() {
   document.querySelector("#edit-work-title").value = pages.work.title;
   document.querySelector("#edit-work-intro").value = pages.work.intro;
   document.querySelector("#edit-work-link-label").value = pages.work.linkLabel;
-  document.querySelector("#edit-work-section-eyebrow").value = pages.work.sectionEyebrow;
   document.querySelector("#edit-work-section-title").value = pages.work.sectionTitle;
   document.querySelector("#edit-about-eyebrow").value = pages.about.eyebrow;
   document.querySelector("#edit-about-title").value = pages.about.title;
@@ -668,7 +663,6 @@ function readEditorData() {
       title: document.querySelector("#edit-work-title").value.trim(),
       intro: document.querySelector("#edit-work-intro").value.trim(),
       linkLabel: document.querySelector("#edit-work-link-label").value.trim(),
-      sectionEyebrow: document.querySelector("#edit-work-section-eyebrow").value.trim(),
       sectionTitle: document.querySelector("#edit-work-section-title").value.trim()
     },
     about: {
