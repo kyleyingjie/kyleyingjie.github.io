@@ -1,6 +1,6 @@
 const STORAGE_KEY = "kyleyingjie-portfolio-site-data-v1";
 const EDITOR_MODE = new URLSearchParams(window.location.search).get("edit") === "1";
-const DEFAULT_CATEGORIES = ["Environment Concept Design", "Mobile Game UI", "2D Assets", "Character Art"];
+const DEFAULT_CATEGORIES = ["Environment Concept Design", "Mobile Game UI", "2D Assets", "Character Art", "Personal Project"];
 
 const DEFAULT_SITE_DATA = {
   appearance: {
@@ -49,7 +49,32 @@ const DEFAULT_SITE_DATA = {
     { id: "fieldnotes", title: "Field Notes", category: "2D Assets", placeholder: "fieldnotes", aspect: "landscape" },
     { id: "relic", title: "Relic Studies", category: "2D Assets", placeholder: "relic", aspect: "portrait" },
     { id: "marrow", title: "Marrow", category: "Character Art", placeholder: "marrow", aspect: "portrait" },
-    { id: "ferro", title: "Ferro Courier", category: "Character Art", placeholder: "ferro", aspect: "square" }
+    { id: "ferro", title: "Ferro Courier", category: "Character Art", placeholder: "ferro", aspect: "square" },
+    {
+      id: "for-fun-challenge",
+      title: "For Fun Challenge",
+      category: "Personal Project",
+      aspect: "landscape",
+      images: [
+        "assets/projects/for-fun-challenge/001_sketches_for_full-team.jpg",
+        "assets/projects/for-fun-challenge/002sketches_for_team-indi_start.jpg",
+        "assets/projects/for-fun-challenge/003_sketches_for_team-indi_yve.jpg",
+        "assets/projects/for-fun-challenge/004sketches_for_team-indi_natan.jpg",
+        "assets/projects/for-fun-challenge/005sketches_for_team-indi_balmond.jpg",
+        "assets/projects/for-fun-challenge/005sketches_for_team-indi_uranus.jpg",
+        "assets/projects/for-fun-challenge/006sketches_for_team-indi_franco.jpg",
+        "assets/projects/for-fun-challenge/007sketches_thumbnails_yve.jpg",
+        "assets/projects/for-fun-challenge/008sketches_thumbnails_natan.jpg",
+        "assets/projects/for-fun-challenge/009sketches_thumbnails_balmond.jpg",
+        "assets/projects/for-fun-challenge/010sketches_thumbnails_uranus.jpg",
+        "assets/projects/for-fun-challenge/011sketches_thumbnails_franco.jpg",
+        "assets/projects/for-fun-challenge/012sketches_for_yve.jpg",
+        "assets/projects/for-fun-challenge/013sketches_for_natan.jpg",
+        "assets/projects/for-fun-challenge/014sketches_for_balmond.jpg",
+        "assets/projects/for-fun-challenge/015sketches_for_uranus.jpg",
+        "assets/projects/for-fun-challenge/016sketches_for_franco.jpg"
+      ]
+    }
   ]
 };
 
@@ -57,6 +82,8 @@ let siteData = loadSiteData();
 let selectedCategory = "All";
 let lightboxItems = [];
 let lightboxIndex = 0;
+let lightboxMediaItems = [];
+let lightboxMediaIndex = 0;
 
 const els = {
   navName: document.querySelector("#nav-name"),
@@ -150,6 +177,7 @@ function placeholderImage(artwork) {
 }
 
 function imageSource(artwork) {
+  if (Array.isArray(artwork.images) && artwork.images.length) return artwork.images[0];
   return artwork.image && artwork.image.trim() ? artwork.image.trim() : placeholderImage(artwork);
 }
 
@@ -272,22 +300,38 @@ function renderGallery() {
 
 function openLightbox(index) {
   lightboxIndex = index;
+  lightboxMediaItems = getArtworkMedia(lightboxItems[lightboxIndex]);
+  lightboxMediaIndex = 0;
   showLightboxItem();
   if (!els.lightbox.open) els.lightbox.showModal();
+}
+
+function getArtworkMedia(artwork) {
+  if (Array.isArray(artwork.images) && artwork.images.length) return artwork.images;
+  return [imageSource(artwork)];
 }
 
 function showLightboxItem() {
   const artwork = lightboxItems[lightboxIndex];
   if (!artwork) return;
-  els.lightboxImage.src = imageSource(artwork);
+  els.lightboxImage.src = lightboxMediaItems[lightboxMediaIndex] || imageSource(artwork);
   els.lightboxImage.alt = artwork.title;
   els.lightboxTitle.textContent = artwork.title;
-  els.lightboxCategory.textContent = artwork.category;
+  els.lightboxCategory.textContent = lightboxMediaItems.length > 1
+    ? `${artwork.category} - ${lightboxMediaIndex + 1} / ${lightboxMediaItems.length}`
+    : artwork.category;
 }
 
 function moveLightbox(direction) {
   if (!lightboxItems.length) return;
+  if (lightboxMediaItems.length > 1) {
+    lightboxMediaIndex = (lightboxMediaIndex + direction + lightboxMediaItems.length) % lightboxMediaItems.length;
+    showLightboxItem();
+    return;
+  }
   lightboxIndex = (lightboxIndex + direction + lightboxItems.length) % lightboxItems.length;
+  lightboxMediaItems = getArtworkMedia(lightboxItems[lightboxIndex]);
+  lightboxMediaIndex = 0;
   showLightboxItem();
 }
 
