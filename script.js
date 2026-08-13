@@ -376,7 +376,7 @@ function renderAiFilms() {
   const films = siteData.aiFilms || [];
   if (!films.length) {
     featuredRoot.innerHTML = '<div class="ai-films-empty"><p class="eyebrow">Ready for your first campaign</p><h2>Bring the brand into motion.</h2></div>';
-    grid.innerHTML = '<p class="empty-gallery">Campaign films will appear here once they are added.</p>';
+    grid.replaceChildren();
     return;
   }
   const featured = films.find((film) => film.featured) || films[0];
