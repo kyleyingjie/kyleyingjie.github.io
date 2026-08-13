@@ -116,7 +116,8 @@ const DEFAULT_SITE_DATA = {
         "assets/projects/for-fun-challenge/016sketches_for_franco.jpg"
       ]
     }
-  ]
+  ],
+  aiFilms: []
 };
 
 let siteData = loadSiteData();
@@ -164,6 +165,8 @@ const els = {
   editorForm: document.querySelector("#editor-form"),
   artworkList: document.querySelector("#editor-artwork-list"),
   artworkTemplate: document.querySelector("#artwork-editor-template"),
+  aiFilmList: document.querySelector("#editor-ai-film-list"),
+  aiFilmTemplate: document.querySelector("#ai-film-editor-template"),
   timelineTemplate: document.querySelector("#timeline-editor-template"),
   publishButton: document.querySelector("#publish-github"),
   publishStatus: document.querySelector("#publish-status"),
@@ -201,8 +204,23 @@ function normaliseData(rawData) {
     education: Array.isArray(rawData.education) ? rawData.education : fallback.education,
     skills: Array.isArray(rawData.skills) ? rawData.skills : fallback.skills,
     recognition: Array.isArray(rawData.recognition) ? rawData.recognition : fallback.recognition,
-    artworks: Array.isArray(rawData.artworks) ? rawData.artworks : fallback.artworks
+    artworks: Array.isArray(rawData.artworks) ? rawData.artworks : fallback.artworks,
+    aiFilms: normaliseAiFilms(rawData.aiFilms, fallback.aiFilms)
   };
+}
+
+function normaliseAiFilms(items, fallback) {
+  if (!Array.isArray(items)) return [...fallback];
+  return items.filter((item) => item && typeof item === "object").map((item, index) => ({
+    id: String(item.id || `campaign-${index + 1}`),
+    title: String(item.title || "Untitled campaign"),
+    brand: String(item.brand || "AI visual study"),
+    description: String(item.description || ""),
+    video: String(item.video || ""),
+    poster: String(item.poster || ""),
+    aspect: ["portrait", "landscape", "square"].includes(item.aspect) ? item.aspect : "portrait",
+    featured: Boolean(item.featured)
+  }));
 }
 
 function normaliseCategories(categories, fallback) {
@@ -252,7 +270,7 @@ function imageSource(artwork) {
 function renderSite() {
   const { profile, pages } = siteData;
   applyAppearance();
-  const pageName = { about: "About", contact: "Contact" }[document.body.dataset.page];
+  const pageName = { about: "About", contact: "Contact", sculpt: "3D Sculpt", "ai-films": "AI Brand Films" }[document.body.dataset.page];
   document.title = pageName ? `${pageName} - ${profile.name}` : `${profile.name} - ${profile.role}`;
   if (els.navName) els.navName.textContent = profile.name;
   if (els.artistRole) els.artistRole.textContent = pages.work.eyebrow;
@@ -291,6 +309,79 @@ function renderSite() {
   renderRecognition();
   renderFilters();
   renderGallery();
+  renderAiFilms();
+}
+
+function createFilmVideo(film) {
+  const video = document.createElement("video");
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.preload = "metadata";
+  video.controls = false;
+  if (film.poster) video.poster = film.poster;
+  if (film.video) {
+    video.src = film.video;
+    video.addEventListener("error", () => video.closest(".ai-film-media")?.classList.add("is-error"));
+  }
+  return video;
+}
+
+function addFilmControls(media, video) {
+  const controls = document.createElement("div");
+  controls.className = "ai-film-controls";
+  const play = document.createElement("button");
+  const sound = document.createElement("button");
+  play.type = sound.type = "button";
+  play.className = sound.className = "ai-film-control";
+  play.textContent = "Pause";
+  sound.textContent = "Sound off";
+  play.title = "Pause or play video";
+  sound.title = "Turn sound on or off";
+  play.addEventListener("click", () => {
+    if (video.paused) { video.play().catch(() => {}); play.textContent = "Pause"; }
+    else { video.pause(); play.textContent = "Play"; }
+  });
+  sound.addEventListener("click", () => {
+    video.muted = !video.muted;
+    sound.textContent = video.muted ? "Sound off" : "Sound on";
+  });
+  controls.append(play, sound);
+  media.append(controls);
+}
+
+function renderFilmCard(film, featured = false) {
+  const card = document.createElement("article");
+  card.className = `ai-film-card${featured ? " ai-film-card-featured" : ""}`;
+  const media = document.createElement("div");
+  media.className = `ai-film-media ai-film-${film.aspect}`;
+  const video = createFilmVideo(film);
+  if (!film.video) media.classList.add("is-empty");
+  media.append(video);
+  addFilmControls(media, video);
+  const copy = document.createElement("div");
+  copy.className = "ai-film-copy";
+  copy.innerHTML = `<p class="eyebrow">${escapeXml(film.brand)}</p><h3>${escapeXml(film.title)}</h3><p>${escapeXml(film.description || "AI-led brand film study.")}</p>`;
+  card.append(media, copy);
+  return card;
+}
+
+function renderAiFilms() {
+  const grid = document.querySelector("#ai-films-grid");
+  const featuredRoot = document.querySelector("#ai-films-featured");
+  if (!grid || !featuredRoot) return;
+  grid.replaceChildren();
+  featuredRoot.replaceChildren();
+  const films = siteData.aiFilms || [];
+  if (!films.length) {
+    featuredRoot.innerHTML = '<div class="ai-films-empty"><p class="eyebrow">Ready for your first campaign</p><h2>Bring the brand into motion.</h2><p>Add a looping MP4 and poster through the portfolio editor, then upload them to <code>assets/videos/ai-brand-films/</code>.</p></div>';
+    grid.innerHTML = '<p class="empty-gallery">Campaign films will appear here once they are added.</p>';
+    return;
+  }
+  const featured = films.find((film) => film.featured) || films[0];
+  featuredRoot.append(renderFilmCard(featured, true));
+  films.filter((film) => film.id !== featured.id).forEach((film) => grid.append(renderFilmCard(film)));
 }
 
 function applyAppearance() {
@@ -534,6 +625,7 @@ function setEditorMode() {
   renderCategoryEditor();
   renderCredentialEditors();
   renderEditorArtworks();
+  renderEditorAiFilms();
 }
 
 function renderCategoryEditor() {
@@ -645,6 +737,59 @@ function renderTimelineEditor(listId, items, kind) {
   });
 }
 
+function renderEditorAiFilms() {
+  if (!els.aiFilmList || !els.aiFilmTemplate) return;
+  els.aiFilmList.replaceChildren();
+  siteData.aiFilms.forEach((film, index) => {
+    const fragment = els.aiFilmTemplate.content.cloneNode(true);
+    const card = fragment.querySelector(".ai-film-editor-card");
+    card.dataset.id = film.id;
+    card.querySelector(".ai-film-index").textContent = `Campaign ${index + 1}`;
+    card.querySelector(".ai-film-title-input").value = film.title;
+    card.querySelector(".ai-film-brand-input").value = film.brand;
+    card.querySelector(".ai-film-description-input").value = film.description;
+    card.querySelector(".ai-film-video-input").value = film.video;
+    card.querySelector(".ai-film-poster-input").value = film.poster;
+    card.querySelector(".ai-film-aspect-input").value = film.aspect;
+    card.querySelector(".ai-film-featured-input").checked = film.featured;
+    card.querySelector(".delete-ai-film").addEventListener("click", () => {
+      siteData = normaliseData(readEditorData());
+      siteData.aiFilms = siteData.aiFilms.filter((item) => item.id !== film.id);
+      renderEditorAiFilms();
+    });
+    ["up", "down"].forEach((direction) => card.querySelector(`.move-ai-film-${direction}`).addEventListener("click", () => {
+      siteData = normaliseData(readEditorData());
+      const nextIndex = direction === "up" ? index - 1 : index + 1;
+      if (nextIndex < 0 || nextIndex >= siteData.aiFilms.length) return;
+      [siteData.aiFilms[index], siteData.aiFilms[nextIndex]] = [siteData.aiFilms[nextIndex], siteData.aiFilms[index]];
+      renderEditorAiFilms();
+    }));
+    const preview = card.querySelector(".ai-film-editor-preview");
+    card.querySelector(".ai-film-video-preview-input").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      preview.hidden = false;
+      preview.replaceChildren();
+      const video = document.createElement("video");
+      video.src = URL.createObjectURL(file);
+      video.muted = true;
+      video.controls = true;
+      video.playsInline = true;
+      preview.append(video);
+    });
+    card.querySelector(".ai-film-poster-preview-input").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      preview.hidden = false;
+      const image = document.createElement("img");
+      image.src = URL.createObjectURL(file);
+      image.alt = "Local poster preview";
+      preview.append(image);
+    });
+    els.aiFilmList.append(fragment);
+  });
+}
+
 function renderLineEditor(listId, items, kind, label) {
   const list = document.querySelector(listId);
   if (!list) return;
@@ -748,6 +893,20 @@ function readEditorData() {
       image: card.querySelector(".artwork-image-input").value.trim()
     };
   });
+  const aiFilms = els.aiFilmList ? [...els.aiFilmList.querySelectorAll(".ai-film-editor-card")].map((card) => {
+    const existing = siteData.aiFilms.find((film) => film.id === card.dataset.id) || {};
+    return {
+      ...existing,
+      id: card.dataset.id,
+      title: card.querySelector(".ai-film-title-input").value.trim() || "Untitled campaign",
+      brand: card.querySelector(".ai-film-brand-input").value.trim(),
+      description: card.querySelector(".ai-film-description-input").value.trim(),
+      video: card.querySelector(".ai-film-video-input").value.trim(),
+      poster: card.querySelector(".ai-film-poster-input").value.trim(),
+      aspect: card.querySelector(".ai-film-aspect-input").value,
+      featured: card.querySelector(".ai-film-featured-input").checked
+    };
+  }) : siteData.aiFilms;
   const readTimeline = (listId, includeSummary) => [...document.querySelectorAll(`${listId} .timeline-editor-card`)].map((card) => ({
     years: card.querySelector(".timeline-years-input").value.trim(),
     role: card.querySelector(".timeline-role-input").value.trim(),
@@ -764,7 +923,8 @@ function readEditorData() {
     education: readTimeline("#education-editor-list", false),
     skills: readLines("#skills-editor-list"),
     recognition: readLines("#recognition-editor-list"),
-    artworks
+    artworks,
+    aiFilms
   };
 }
 
@@ -810,6 +970,13 @@ function saveLocalData(event) {
   fillProfileForm();
   renderCredentialEditors();
   renderEditorArtworks();
+  renderEditorAiFilms();
+}
+
+function addAiFilm() {
+  siteData = normaliseData(readEditorData());
+  siteData.aiFilms.push({ id: `campaign-${Date.now()}`, title: "Untitled campaign", brand: "", description: "", video: "", poster: "", aspect: "portrait", featured: siteData.aiFilms.length === 0 });
+  renderEditorAiFilms();
 }
 
 function downloadData() {
@@ -847,6 +1014,7 @@ function importData(event) {
       fillProfileForm();
       renderCredentialEditors();
       renderEditorArtworks();
+      renderEditorAiFilms();
     } catch {
       window.alert("That file is not valid portfolio site data.");
     }
@@ -864,6 +1032,7 @@ function resetData() {
   renderCategoryEditor();
   renderCredentialEditors();
   renderEditorArtworks();
+  renderEditorAiFilms();
 }
 
 function restorePublishToken() {
@@ -1020,6 +1189,7 @@ async function publishToGitHub() {
     fillProfileForm();
     renderCredentialEditors();
     renderEditorArtworks();
+    renderEditorAiFilms();
     showPublishStatus(`Published${uploadedImages ? ` ${uploadedImages} image${uploadedImages === 1 ? "" : "s"} and` : ""} your portfolio. Your live site will refresh shortly.`, "success");
   } catch (error) {
     showPublishStatus(`Publish failed: ${error.message}`, "error");
@@ -1049,6 +1219,7 @@ window.addEventListener("keydown", (event) => {
 if (els.editorForm) {
   restorePublishToken();
   document.querySelector("#add-artwork").addEventListener("click", addArtwork);
+  document.querySelector("#add-ai-film").addEventListener("click", addAiFilm);
   document.querySelector("#add-experience").addEventListener("click", addExperience);
   document.querySelector("#add-education").addEventListener("click", addEducation);
   document.querySelector("#add-skill").addEventListener("click", addSkill);

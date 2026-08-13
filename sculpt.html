@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive 3D sculpture viewer for Kyle Zhen Yingjie.">
+  <title>3D Sculpt - Kyle Zhen Yingjie</title>
+  <link rel="stylesheet" href="style.css?v=sculpt-1">
+</head>
+<body data-page="sculpt">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="View selected work">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span id="nav-name">Kyle Zhen Yingjie</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Work</a>
+      <a class="is-current" href="sculpt.html" aria-current="page">3D Sculpt</a>
+      <a href="ai-brand-films.html">AI Brand Films</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="editor-entry" href="index.html?edit=1">Edit portfolio</a>
+    </nav>
+  </header>
+
+  <main class="page-main sculpt-main">
+    <section class="sculpt-page section-shell" aria-labelledby="sculpt-title">
+      <div class="sculpt-heading">
+        <div>
+          <p class="eyebrow">Interactive study</p>
+          <h1 id="sculpt-title">3D Sculpt</h1>
+        </div>
+        <p class="sculpt-intro">A closer look at form, shape, and surface. The viewer is designed to stay light on mobile.</p>
+      </div>
+
+      <div class="sculpt-viewer-shell" id="sculpt-viewer" data-model="assets/models/sculpt.glb">
+        <div class="sculpt-viewer-toolbar" aria-label="Viewer controls">
+          <span class="sculpt-viewer-label">Sculpt study</span>
+          <button class="icon-button sculpt-reset" id="sculpt-reset" type="button" title="Reset view" aria-label="Reset view">&#8634;</button>
+        </div>
+        <div class="sculpt-canvas-wrap" id="sculpt-canvas-wrap"></div>
+        <div class="sculpt-status" id="sculpt-status" role="status" aria-live="polite">
+          <span class="sculpt-status-mark" aria-hidden="true"></span>
+          <strong id="sculpt-status-title">Preparing viewer</strong>
+          <p id="sculpt-status-copy">Checking for a local GLB model.</p>
+        </div>
+        <p class="sculpt-viewer-hint" id="sculpt-viewer-hint">Drag to rotate &middot; pinch or scroll to zoom</p>
+      </div>
+
+      <div class="sculpt-meta">
+        <p><span class="eyebrow">Model file</span><code>assets/models/sculpt.glb</code></p>
+        <p><span class="eyebrow">Format</span>Compressed GLB with embedded textures</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="site-data.js?v=contact-3"></script>
+  <script src="script.js?v=sculpt-1"></script>
+  <script type="module" src="sculpt-viewer.js?v=sculpt-1"></script>
+</body>
+</html>

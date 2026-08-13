@@ -66,6 +66,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     "Crowbar 2018 - Animation Silver Award (Team)",
     "Crowbar 2018 - Effects Bronze Award (Team)"
   ],
+  "aiFilms": [],
   "artworks": [
     {
       "id": "for-fun-challenge",

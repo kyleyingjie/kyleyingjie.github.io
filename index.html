@@ -15,6 +15,8 @@
     </a>
     <nav aria-label="Primary navigation">
       <a class="is-current" href="index.html" aria-current="page">Work</a>
+      <a href="sculpt.html">3D Sculpt</a>
+      <a href="ai-brand-films.html">AI Brand Films</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a class="editor-entry" href="index.html?edit=1">Edit portfolio</a>
@@ -196,6 +198,14 @@
         </div>
         <div id="editor-artwork-list"></div>
       </section>
+      <section class="editor-section">
+        <div class="editor-section-title">
+          <h3>AI Brand Films</h3>
+          <button class="small-button" id="add-ai-film" type="button">Add campaign</button>
+        </div>
+        <p class="editor-help">Use local file pickers for preview only. Upload final MP4 and poster files to GitHub, then enter their paths here.</p>
+        <div id="editor-ai-film-list"></div>
+      </section>
       <section class="editor-section editor-actions">
         <button class="primary-button" type="submit">Save preview only</button>
         <div class="github-publish-fields">
@@ -240,6 +250,35 @@
       <label>Role or qualification<input class="timeline-role-input"></label>
       <label>Company or school<input class="timeline-place-input"></label>
       <label class="timeline-summary-field">Description<textarea class="timeline-summary-input" rows="3"></textarea></label>
+    </article>
+  </template>
+
+  <template id="ai-film-editor-template">
+    <article class="ai-film-editor-card">
+      <div class="artwork-editor-card-heading">
+        <span class="ai-film-index"></span>
+        <div class="editor-card-actions">
+          <button class="quiet-button move-ai-film-up" type="button" aria-label="Move campaign up">Up</button>
+          <button class="quiet-button move-ai-film-down" type="button" aria-label="Move campaign down">Down</button>
+          <button class="quiet-button delete-ai-film" type="button">Remove</button>
+        </div>
+      </div>
+      <label>Campaign title<input class="ai-film-title-input" required></label>
+      <label>Brand or concept<input class="ai-film-brand-input" placeholder="Fashion editorial concept"></label>
+      <label>Description<textarea class="ai-film-description-input" rows="3"></textarea></label>
+      <label>Video path<input class="ai-film-video-input" placeholder="assets/videos/ai-brand-films/campaign.mp4"></label>
+      <label>Poster path<input class="ai-film-poster-input" placeholder="assets/videos/ai-brand-films/campaign-poster.jpg"></label>
+      <label>Format
+        <select class="ai-film-aspect-input">
+          <option value="portrait">Portrait (9:16)</option>
+          <option value="landscape">Landscape (16:9)</option>
+          <option value="square">Square (1:1)</option>
+        </select>
+      </label>
+      <label class="film-featured-label"><input class="ai-film-featured-input" type="checkbox"> Feature as the lead campaign</label>
+      <label class="file-input-label">Preview local video<input class="ai-film-video-preview-input" type="file" accept="video/mp4,video/webm"></label>
+      <label class="file-input-label">Preview local poster<input class="ai-film-poster-preview-input" type="file" accept="image/*"></label>
+      <div class="ai-film-editor-preview" hidden></div>
     </article>
   </template>
 
