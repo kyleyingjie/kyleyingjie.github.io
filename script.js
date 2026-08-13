@@ -375,7 +375,7 @@ function renderAiFilms() {
   featuredRoot.replaceChildren();
   const films = siteData.aiFilms || [];
   if (!films.length) {
-    featuredRoot.innerHTML = '<div class="ai-films-empty"><p class="eyebrow">Ready for your first campaign</p><h2>Bring the brand into motion.</h2><p>Add a looping MP4 and poster through the portfolio editor, then upload them to <code>assets/videos/ai-brand-films/</code>.</p></div>';
+    featuredRoot.innerHTML = '<div class="ai-films-empty"><p class="eyebrow">Ready for your first campaign</p><h2>Bring the brand into motion.</h2></div>';
     grid.innerHTML = '<p class="empty-gallery">Campaign films will appear here once they are added.</p>';
     return;
   }
