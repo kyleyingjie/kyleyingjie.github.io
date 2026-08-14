@@ -210,6 +210,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "images": [
         "assets/projects/fan-art/splash 0111.jpg",
         "assets/projects/fan-art/splash 0222.jpg",
+        "assets/projects/fan-art/Akali_mid_air_002.jpg",
         "assets/projects/fan-art/viego.jpg",
         "assets/projects/fan-art/CLASS02b copy3.jpg",
         "assets/projects/fan-art/Elf_in_forest_splash_art_001.jpg",
