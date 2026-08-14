@@ -213,7 +213,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/fan-art/viego.jpg",
         "assets/projects/fan-art/CLASS02b copy3.jpg",
         "assets/projects/fan-art/Elf_in_forest_splash_art_001.jpg",
-        "assets/projects/fan-art/bust.jpeg"
+        "assets/projects/fan-art/bust.jpeg",
+        "assets/projects/fan-art/bust_painting_001.jpg"
       ]
     },
     {
