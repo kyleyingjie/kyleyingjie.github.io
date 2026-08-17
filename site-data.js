@@ -163,7 +163,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/infold-merch/Group 8.jpg",
         "assets/projects/infold-merch/Group 9dsg.jpg",
         "assets/projects/infold-merch/infold_merch_0gsdgsd1.jpg",
-        "assets/projects/infold-merch/infold_merch_01.jpg"
+        "assets/projects/infold-merch/infold_merch_01.jpg",
+        "assets/projects/infold-merch/infold.jpeg"
       ]
     },
     {
