@@ -213,7 +213,10 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/dungeon-sweeper/Toon_soldier_001nologo.jpg",
         "assets/projects/dungeon-sweeper/minesweeper-illust_01c.jpg",
         "assets/projects/dungeon-sweeper/minesweeper-illust_02.jpg",
-        "assets/projects/dungeon-sweeper/minesweeper-illust_02sd.jpg"
+        "assets/projects/dungeon-sweeper/minesweeper-illust_02sd.jpg",
+        "assets/projects/dungeon-sweeper/Generating.jpg",
+        "assets/projects/dungeon-sweeper/minesweeper-logo_01bd.jpg",
+        "assets/projects/dungeon-sweeper/UI - DungeonSweeper1.jpg"
       ]
     },
     {
