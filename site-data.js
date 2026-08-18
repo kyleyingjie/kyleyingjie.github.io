@@ -107,8 +107,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/elf-forager/elf-forager_03.jpg",
         "assets/projects/elf-forager/elf-forager_04.jpg",
         "assets/projects/elf-forager/elf-forager_05.jpg",
-        "assets/projects/elf-forager/elf-pots_01.jpg",
-        "assets/projects/elf-forager/Vytha-shop-illustration_0saf.jpg"
+        "assets/projects/elf-forager/elf-pots_01.jpg"
       ]
     },
     {
@@ -203,7 +202,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/game-ui-design/UI - Project Ricochet 1.jpg",
         "assets/projects/game-ui-design/UI - Project Ricochet 2.jpg",
         "assets/projects/game-ui-design/cargostudioshowcase.jpg",
-        "assets/projects/game-ui-design/UI - Shop01.jpg"
+        "assets/projects/game-ui-design/UI - Shop01.jpg",
+        "assets/projects/game-ui-design/Vytha-shop-illustration_0saf.jpg"
       ]
     },
     {
