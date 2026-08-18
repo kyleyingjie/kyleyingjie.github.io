@@ -115,6 +115,20 @@ const DEFAULT_SITE_DATA = {
         "assets/projects/for-fun-challenge/015sketches_for_uranus.jpg",
         "assets/projects/for-fun-challenge/016sketches_for_franco.jpg"
       ]
+    },
+    {
+      id: "dungeon-sweeper",
+      title: "Dungeon Sweeper",
+      category: "Personal Project",
+      aspect: "portrait",
+      image: "assets/projects/dungeon-sweeper/Toon_soldier_001.jpg",
+      images: [
+        "assets/projects/dungeon-sweeper/Toon_soldier_001.jpg",
+        "assets/projects/dungeon-sweeper/Toon_soldier_001nologo.jpg",
+        "assets/projects/dungeon-sweeper/minesweeper-illust_01c.jpg",
+        "assets/projects/dungeon-sweeper/minesweeper-illust_02.jpg",
+        "assets/projects/dungeon-sweeper/minesweeper-illust_02sd.jpg"
+      ]
     }
   ],
   aiFilms: []

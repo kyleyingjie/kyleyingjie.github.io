@@ -203,6 +203,20 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       ]
     },
     {
+      "id": "dungeon-sweeper",
+      "title": "Dungeon Sweeper",
+      "category": "Personal Project",
+      "aspect": "portrait",
+      "image": "assets/projects/dungeon-sweeper/Toon_soldier_001.jpg",
+      "images": [
+        "assets/projects/dungeon-sweeper/Toon_soldier_001.jpg",
+        "assets/projects/dungeon-sweeper/Toon_soldier_001nologo.jpg",
+        "assets/projects/dungeon-sweeper/minesweeper-illust_01c.jpg",
+        "assets/projects/dungeon-sweeper/minesweeper-illust_02.jpg",
+        "assets/projects/dungeon-sweeper/minesweeper-illust_02sd.jpg"
+      ]
+    },
+    {
       "id": "fan-art",
       "title": "Fan Art",
       "category": "Personal Project",
