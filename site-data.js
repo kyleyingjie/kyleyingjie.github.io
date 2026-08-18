@@ -107,7 +107,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/elf-forager/elf-forager_03.jpg",
         "assets/projects/elf-forager/elf-forager_04.jpg",
         "assets/projects/elf-forager/elf-forager_05.jpg",
-        "assets/projects/elf-forager/elf-pots_01.jpg"
+        "assets/projects/elf-forager/elf-pots_01.jpg",
+        "assets/projects/elf-forager/Vytha-shop-illustration_0saf.jpg"
       ]
     },
     {
