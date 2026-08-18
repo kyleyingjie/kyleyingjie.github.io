@@ -195,6 +195,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/game-ui-design/UI - Dungeon Sweeper1.jpg",
         "assets/projects/game-ui-design/UI - Casino1.jpg",
         "assets/projects/game-ui-design/UI - Jackpot1.jpg",
+        "assets/projects/game-ui-design/Layer 20fa2.jpg",
         "assets/projects/game-ui-design/SG60_03.jpg",
         "assets/projects/game-ui-design/UI - Kungfu Dash 1.jpg",
         "assets/projects/game-ui-design/UI - Kungfu Dash 2.jpg",
