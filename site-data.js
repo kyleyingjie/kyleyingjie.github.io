@@ -201,6 +201,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/game-ui-design/UI - Pirate1.jpg",
         "assets/projects/game-ui-design/UI - Project Ricochet 1.jpg",
         "assets/projects/game-ui-design/UI - Project Ricochet 2.jpg",
+        "assets/projects/game-ui-design/cargostudioshowcase.jpg",
         "assets/projects/game-ui-design/UI - Shop01.jpg"
       ]
     },
