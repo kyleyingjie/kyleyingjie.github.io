@@ -126,6 +126,7 @@ const DEFAULT_SITE_DATA = {
         "assets/projects/dungeon-sweeper/Toon_soldier_001.jpg",
         "assets/projects/dungeon-sweeper/Toon_soldier_001nologo.jpg",
         "assets/projects/dungeon-sweeper/minesweeper-illust_01c.jpg",
+        "assets/projects/dungeon-sweeper/Lighting_conditions_for_game_art.jpg",
         "assets/projects/dungeon-sweeper/minesweeper-illust_02.jpg",
         "assets/projects/dungeon-sweeper/minesweeper-illust_02sd.jpg",
         "assets/projects/dungeon-sweeper/Generating.jpg",
