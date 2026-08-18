@@ -253,6 +253,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/creature-design/Character 3.jpg",
         "assets/projects/creature-design/Character 4a.jpg",
         "assets/projects/creature-design/Character 4b.jpg",
+        "assets/projects/creature-design/Mascot_design_rendering_2K_202608181808.jpg",
+        "assets/projects/creature-design/Mascot_design_rendering_2K.jpg",
         "assets/projects/creature-design/Character 10.jpg",
         "assets/projects/creature-design/Character 2 - Copy.jpg"
       ]
