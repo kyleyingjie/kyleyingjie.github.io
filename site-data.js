@@ -264,7 +264,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     },
     {
       "id": "wind-character-design",
-      "title": "Wind Character Design",
+      "title": "Wind Ninja Design",
       "category": "Personal Project",
       "aspect": "portrait",
       "image": "assets/projects/wind-character-design/wind-character-design-01.jpg",
