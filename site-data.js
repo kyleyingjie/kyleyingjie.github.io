@@ -261,6 +261,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/creature-design/creature-design-05.jpg",
         "assets/projects/creature-design/creature-design-06.jpg",
         "assets/projects/creature-design/creature-design-07.jpg",
+        "assets/projects/creature-design/creature-design-10.jpg",
         "assets/projects/creature-design/creature-design-09.jpg"
       ]
     },
