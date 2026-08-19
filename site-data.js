@@ -136,7 +136,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/giant-armor-glove/giant-armor-glove-04.jpg",
         "assets/projects/giant-armor-glove/giant-armor-glove-05.jpg",
         "assets/projects/giant-armor-glove/giant-armor-glove-06.jpg",
-        "assets/projects/giant-armor-glove/giant-armor-glove-07.jpg"
+        "assets/projects/giant-armor-glove/giant-armor-glove-07.jpg",
+        "assets/projects/giant-armor-glove/giant-armor-glove-08.jpg"
       ]
     },
     {
