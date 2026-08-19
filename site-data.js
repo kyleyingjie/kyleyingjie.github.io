@@ -233,7 +233,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Fan Art",
       "category": "Personal Project",
       "aspect": "portrait",
-      "image": "assets/projects/fan-art/fan-art-06.jpg",
+      "image": "assets/projects/fan-art/fan-art-07.jpg",
       "images": [
         "assets/projects/fan-art/fan-art-01.jpg",
         "assets/projects/fan-art/fan-art-02.jpg",
@@ -241,8 +241,9 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/fan-art/fan-art-04.jpg",
         "assets/projects/fan-art/fan-art-05.jpg",
         "assets/projects/fan-art/fan-art-06.jpg",
-        "assets/projects/fan-art/fan-art-07.jpeg",
-        "assets/projects/fan-art/fan-art-08.jpg"
+        "assets/projects/fan-art/fan-art-07.jpg",
+        "assets/projects/fan-art/fan-art-08.jpeg",
+        "assets/projects/fan-art/fan-art-09.jpg"
       ]
     },
     {
