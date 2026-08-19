@@ -180,6 +180,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/professional-portfolio/professional-portfolio-03.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-04.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-05.jpg",
+        "assets/projects/professional-portfolio/portfolio-2026-pdf---Copfasy.jpg",
+        "assets/projects/professional-portfolio/portfolio-2026-pdf---Copfsafy.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-06.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-07.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-08.jpg",
