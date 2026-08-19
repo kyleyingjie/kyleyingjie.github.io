@@ -253,6 +253,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "aspect": "landscape",
       "image": "assets/projects/creature-design/creature-design-08.jpg",
       "images": [
+        "assets/projects/creature-design/creature-design-08.jpg",
         "assets/projects/creature-design/creature-design-01.jpg",
         "assets/projects/creature-design/creature-design-02.jpg",
         "assets/projects/creature-design/creature-design-03.jpg",
@@ -260,7 +261,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/creature-design/creature-design-05.jpg",
         "assets/projects/creature-design/creature-design-06.jpg",
         "assets/projects/creature-design/creature-design-07.jpg",
-        "assets/projects/creature-design/creature-design-08.jpg"
+        "assets/projects/creature-design/creature-design-09.jpg"
       ]
     },
     {
