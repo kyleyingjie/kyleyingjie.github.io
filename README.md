@@ -1,4 +1,4 @@
-# Kyle Yingjie Portfolio
+# Kyle Ying Jie Portfolio
 
 This repository contains the static portfolio site published at `https://kyleyingjie.github.io` through GitHub Pages.
 

@@ -9,7 +9,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     "Personal Project"
   ],
   "profile": {
-    "name": "Hi, I am Kyle Yingjie!",
+    "name": "Hi, I am Kyle Ying Jie!",
     "role": "Visual Designer & 2D Artist",
     "statement": "Visual and UI design for digital games.",
     "about": "Detail-oriented, adaptable, and collaborative visual designer with experience creating visual and UI content for digital games.",
@@ -17,7 +17,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     "phone": "+65 8612 3313",
     "instagram": "",
     "linkedin": "",
-    "cvUrl": "assets/Kyle_Yingjie_Resume_2026.pdf",
+    "cvUrl": "assets/Kyle_Ying_Jie_Resume_2026.pdf",
     "cvLabel": "Download CV (PDF)"
   },
   "experience": [
@@ -74,40 +74,40 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "category": "Personal Project",
       "aspect": "landscape",
       "images": [
-        "assets/projects/for-fun-challenge/sketches_for_ipad-5.jpg",
-        "assets/projects/for-fun-challenge/001_sketches_for_full-team.jpg",
-        "assets/projects/for-fun-challenge/002sketches_for_team-indi_start.jpg",
-        "assets/projects/for-fun-challenge/003_sketches_for_team-indi_yve.jpg",
-        "assets/projects/for-fun-challenge/004sketches_for_team-indi_natan.jpg",
-        "assets/projects/for-fun-challenge/005sketches_for_team-indi_balmond.jpg",
-        "assets/projects/for-fun-challenge/005sketches_for_team-indi_uranus.jpg",
-        "assets/projects/for-fun-challenge/006sketches_for_team-indi_franco.jpg",
-        "assets/projects/for-fun-challenge/007sketches_thumbnails_yve.jpg",
-        "assets/projects/for-fun-challenge/008sketches_thumbnails_natan.jpg",
-        "assets/projects/for-fun-challenge/009sketches_thumbnails_balmond.jpg",
-        "assets/projects/for-fun-challenge/010sketches_thumbnails_uranus.jpg",
-        "assets/projects/for-fun-challenge/011sketches_thumbnails_franco.jpg",
-        "assets/projects/for-fun-challenge/012sketches_for_yve.jpg",
-        "assets/projects/for-fun-challenge/013sketches_for_natan.jpg",
-        "assets/projects/for-fun-challenge/014sketches_for_balmond.jpg",
-        "assets/projects/for-fun-challenge/015sketches_for_uranus.jpg",
-        "assets/projects/for-fun-challenge/016sketches_for_franco.jpg"
+        "assets/projects/for-fun-challenge/for-fun-challenge-01.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-02.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-03.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-04.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-05.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-06.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-07.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-08.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-09.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-10.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-11.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-12.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-13.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-14.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-15.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-16.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-17.jpg",
+        "assets/projects/for-fun-challenge/for-fun-challenge-18.jpg"
       ],
-      "image": "assets/projects/for-fun-challenge/sketches_for_ipad-5.jpg"
+      "image": "assets/projects/for-fun-challenge/for-fun-challenge-01.jpg"
     },
     {
       "id": "elf-forager",
       "title": "Stylized Prop Design",
       "category": "Personal Project",
       "aspect": "landscape",
-      "image": "assets/projects/elf-forager/elf-forager_03.jpg",
+      "image": "assets/projects/elf-forager/elf-forager-03.jpg",
       "images": [
-        "assets/projects/elf-forager/elf-forager_01.jpg",
-        "assets/projects/elf-forager/elf-forager_02.jpg",
-        "assets/projects/elf-forager/elf-forager_03.jpg",
-        "assets/projects/elf-forager/elf-forager_04.jpg",
-        "assets/projects/elf-forager/elf-forager_05.jpg",
-        "assets/projects/elf-forager/elf-pots_01.jpg"
+        "assets/projects/elf-forager/elf-forager-01.jpg",
+        "assets/projects/elf-forager/elf-forager-02.jpg",
+        "assets/projects/elf-forager/elf-forager-03.jpg",
+        "assets/projects/elf-forager/elf-forager-04.jpg",
+        "assets/projects/elf-forager/elf-forager-05.jpg",
+        "assets/projects/elf-forager/elf-forager-06.jpg"
       ]
     },
     {
@@ -115,12 +115,12 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Survivor Pack - Art Test",
       "category": "Personal Project",
       "aspect": "portrait",
-      "image": "assets/projects/survivor-pack/Art-test_KyleYingjie_02.jpg",
+      "image": "assets/projects/survivor-pack/survivor-pack-03.jpg",
       "images": [
-        "assets/projects/survivor-pack/Art-test_KyleYingjie.jpg",
-        "assets/projects/survivor-pack/Art-test_KyleYingjie_01.jpg",
-        "assets/projects/survivor-pack/Art-test_KyleYingjie_02.jpg",
-        "assets/projects/survivor-pack/art-test-02_02.jpg"
+        "assets/projects/survivor-pack/survivor-pack-01.jpg",
+        "assets/projects/survivor-pack/survivor-pack-02.jpg",
+        "assets/projects/survivor-pack/survivor-pack-03.jpg",
+        "assets/projects/survivor-pack/survivor-pack-04.jpg"
       ]
     },
     {
@@ -128,15 +128,15 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Giant Armor Glove Design",
       "category": "Personal Project",
       "aspect": "landscape",
-      "image": "assets/projects/giant-armor-glove/Layer 3vs5.jpg",
+      "image": "assets/projects/giant-armor-glove/giant-armor-glove-04.jpg",
       "images": [
-        "assets/projects/giant-armor-glove/Giant_armor_glove_design_00asfa1.jpg",
-        "assets/projects/giant-armor-glove/Giant_armor_glove_design_00fsaf1.jpg",
-        "assets/projects/giant-armor-glove/Giant_armor_glove_design_02.jpg",
-        "assets/projects/giant-armor-glove/Layer 3vs5.jpg",
-        "assets/projects/giant-armor-glove/Giant_armor_glove_design_03.jpg",
-        "assets/projects/giant-armor-glove/Character_design_with_oversized_gauntlet.jpg",
-        "assets/projects/giant-armor-glove/Giant_armor_glove_design_05.jpg"
+        "assets/projects/giant-armor-glove/giant-armor-glove-01.jpg",
+        "assets/projects/giant-armor-glove/giant-armor-glove-02.jpg",
+        "assets/projects/giant-armor-glove/giant-armor-glove-03.jpg",
+        "assets/projects/giant-armor-glove/giant-armor-glove-04.jpg",
+        "assets/projects/giant-armor-glove/giant-armor-glove-05.jpg",
+        "assets/projects/giant-armor-glove/giant-armor-glove-06.jpg",
+        "assets/projects/giant-armor-glove/giant-armor-glove-07.jpg"
       ]
     },
     {
@@ -144,13 +144,13 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Klaus Environment Design",
       "category": "Personal Project",
       "aspect": "landscape",
-      "image": "assets/projects/klaus-environment/Group 4.jpg",
+      "image": "assets/projects/klaus-environment/klaus-environment-02.jpg",
       "images": [
-        "assets/projects/klaus-environment/Klaus_animated_film_environment_001.jpg",
-        "assets/projects/klaus-environment/Group 4.jpg",
-        "assets/projects/klaus-environment/Group 2.jpg",
-        "assets/projects/klaus-environment/Group 3.jpg",
-        "assets/projects/klaus-environment/Klaus_animated_film_environment_005.jpg"
+        "assets/projects/klaus-environment/klaus-environment-01.jpg",
+        "assets/projects/klaus-environment/klaus-environment-02.jpg",
+        "assets/projects/klaus-environment/klaus-environment-03.jpg",
+        "assets/projects/klaus-environment/klaus-environment-04.jpg",
+        "assets/projects/klaus-environment/klaus-environment-05.jpg"
       ]
     },
     {
@@ -158,14 +158,14 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Infold Merch Design",
       "category": "Personal Project",
       "aspect": "landscape",
-      "image": "assets/projects/infold-merch/Group 8.jpg",
+      "image": "assets/projects/infold-merch/infold-merch-02.jpg",
       "images": [
-        "assets/projects/infold-merch/Group 7.jpg",
-        "assets/projects/infold-merch/Group 8.jpg",
-        "assets/projects/infold-merch/Group 9dsg.jpg",
-        "assets/projects/infold-merch/infold_merch_0gsdgsd1.jpg",
-        "assets/projects/infold-merch/infold_merch_01.jpg",
-        "assets/projects/infold-merch/infold.jpeg"
+        "assets/projects/infold-merch/infold-merch-01.jpg",
+        "assets/projects/infold-merch/infold-merch-02.jpg",
+        "assets/projects/infold-merch/infold-merch-03.jpg",
+        "assets/projects/infold-merch/infold-merch-04.jpg",
+        "assets/projects/infold-merch/infold-merch-05.jpg",
+        "assets/projects/infold-merch/infold-merch-06.jpeg"
       ]
     },
     {
@@ -180,12 +180,12 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/professional-portfolio/professional-portfolio-03.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-04.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-05.jpg",
-        "assets/projects/professional-portfolio/portfolio-2026-pdf---Copfasy.jpg",
-        "assets/projects/professional-portfolio/portfolio-2026-pdf---Copfsafy.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-06.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-07.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-08.jpg",
-        "assets/projects/professional-portfolio/professional-portfolio-09.jpg"
+        "assets/projects/professional-portfolio/professional-portfolio-09.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-10.jpg",
+        "assets/projects/professional-portfolio/professional-portfolio-11.jpg"
       ]
     },
     {
@@ -193,21 +193,21 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Game UI Design",
       "category": "Personal Project",
       "aspect": "landscape",
-      "image": "assets/projects/game-ui-design/UI - Dungeon Sweeper1.jpg",
+      "image": "assets/projects/game-ui-design/game-ui-design-01.jpg",
       "images": [
-        "assets/projects/game-ui-design/UI - Dungeon Sweeper1.jpg",
-        "assets/projects/game-ui-design/UI - Casino1.jpg",
-        "assets/projects/game-ui-design/UI - Jackpot1.jpg",
-        "assets/projects/game-ui-design/Layer 20fa2.jpg",
-        "assets/projects/game-ui-design/SG60_03.jpg",
-        "assets/projects/game-ui-design/UI - Kungfu Dash 1.jpg",
-        "assets/projects/game-ui-design/UI - Kungfu Dash 2.jpg",
-        "assets/projects/game-ui-design/UI - Pirate1.jpg",
-        "assets/projects/game-ui-design/UI - Project Ricochet 1.jpg",
-        "assets/projects/game-ui-design/UI - Project Ricochet 2.jpg",
-        "assets/projects/game-ui-design/cargostudioshowcase.jpg",
-        "assets/projects/game-ui-design/UI - Shop01.jpg",
-        "assets/projects/game-ui-design/Vytha-shop-illustration_0saf.jpg"
+        "assets/projects/game-ui-design/game-ui-design-01.jpg",
+        "assets/projects/game-ui-design/game-ui-design-02.jpg",
+        "assets/projects/game-ui-design/game-ui-design-03.jpg",
+        "assets/projects/game-ui-design/game-ui-design-04.jpg",
+        "assets/projects/game-ui-design/game-ui-design-05.jpg",
+        "assets/projects/game-ui-design/game-ui-design-06.jpg",
+        "assets/projects/game-ui-design/game-ui-design-07.jpg",
+        "assets/projects/game-ui-design/game-ui-design-08.jpg",
+        "assets/projects/game-ui-design/game-ui-design-09.jpg",
+        "assets/projects/game-ui-design/game-ui-design-10.jpg",
+        "assets/projects/game-ui-design/game-ui-design-11.jpg",
+        "assets/projects/game-ui-design/game-ui-design-12.jpg",
+        "assets/projects/game-ui-design/game-ui-design-13.jpg"
       ]
     },
     {
@@ -215,17 +215,17 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Dungeon Sweeper",
       "category": "Personal Project",
       "aspect": "portrait",
-      "image": "assets/projects/dungeon-sweeper/Toon_soldier_001.jpg",
+      "image": "assets/projects/dungeon-sweeper/dungeon-sweeper-01.jpg",
       "images": [
-        "assets/projects/dungeon-sweeper/Toon_soldier_001.jpg",
-        "assets/projects/dungeon-sweeper/Toon_soldier_001nologo.jpg",
-        "assets/projects/dungeon-sweeper/minesweeper-illust_01c.jpg",
-        "assets/projects/dungeon-sweeper/Lighting_conditions_for_game_art.jpg",
-        "assets/projects/dungeon-sweeper/minesweeper-illust_02.jpg",
-        "assets/projects/dungeon-sweeper/minesweeper-illust_02sd.jpg",
-        "assets/projects/dungeon-sweeper/Generating.jpg",
-        "assets/projects/dungeon-sweeper/minesweeper-logo_01bd.jpg",
-        "assets/projects/dungeon-sweeper/UI - DungeonSweeper1.jpg"
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-01.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-02.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-03.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-04.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-05.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-06.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-07.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-08.jpg",
+        "assets/projects/dungeon-sweeper/dungeon-sweeper-09.jpg"
       ]
     },
     {
@@ -233,16 +233,16 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Fan Art",
       "category": "Personal Project",
       "aspect": "portrait",
-      "image": "assets/projects/fan-art/Elf_in_forest_splash_art_001.jpg",
+      "image": "assets/projects/fan-art/fan-art-06.jpg",
       "images": [
-        "assets/projects/fan-art/splash 0111.jpg",
-        "assets/projects/fan-art/splash 0222.jpg",
-        "assets/projects/fan-art/Akali_mid_air_002.jpg",
-        "assets/projects/fan-art/viego.jpg",
-        "assets/projects/fan-art/CLASS02b copy3.jpg",
-        "assets/projects/fan-art/Elf_in_forest_splash_art_001.jpg",
-        "assets/projects/fan-art/bust.jpeg",
-        "assets/projects/fan-art/bust_painting_001.jpg"
+        "assets/projects/fan-art/fan-art-01.jpg",
+        "assets/projects/fan-art/fan-art-02.jpg",
+        "assets/projects/fan-art/fan-art-03.jpg",
+        "assets/projects/fan-art/fan-art-04.jpg",
+        "assets/projects/fan-art/fan-art-05.jpg",
+        "assets/projects/fan-art/fan-art-06.jpg",
+        "assets/projects/fan-art/fan-art-07.jpeg",
+        "assets/projects/fan-art/fan-art-08.jpg"
       ]
     },
     {
@@ -250,16 +250,28 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Creature Design",
       "category": "Personal Project",
       "aspect": "landscape",
-      "image": "assets/projects/creature-design/Character 2 - Copy.jpg",
+      "image": "assets/projects/creature-design/creature-design-08.jpg",
       "images": [
-        "assets/projects/creature-design/Character 2.jpg",
-        "assets/projects/creature-design/Character 3.jpg",
-        "assets/projects/creature-design/Character 4a.jpg",
-        "assets/projects/creature-design/Character 4b.jpg",
-        "assets/projects/creature-design/Mascot_design_rendering_2K_202608181808.jpg",
-        "assets/projects/creature-design/Mascot_design_rendering_2K.jpg",
-        "assets/projects/creature-design/Character 10.jpg",
-        "assets/projects/creature-design/Character 2 - Copy.jpg"
+        "assets/projects/creature-design/creature-design-01.jpg",
+        "assets/projects/creature-design/creature-design-02.jpg",
+        "assets/projects/creature-design/creature-design-03.jpg",
+        "assets/projects/creature-design/creature-design-04.jpg",
+        "assets/projects/creature-design/creature-design-05.jpg",
+        "assets/projects/creature-design/creature-design-06.jpg",
+        "assets/projects/creature-design/creature-design-07.jpg",
+        "assets/projects/creature-design/creature-design-08.jpg"
+      ]
+    },
+    {
+      "id": "wind-character-design",
+      "title": "Wind Character Design",
+      "category": "Personal Project",
+      "aspect": "portrait",
+      "image": "assets/projects/wind-character-design/wind-character-design-01.jpg",
+      "images": [
+        "assets/projects/wind-character-design/wind-character-design-01.jpg",
+        "assets/projects/wind-character-design/wind-character-design-02.jpg",
+        "assets/projects/wind-character-design/wind-character-design-03.jpg"
       ]
     }
   ]
