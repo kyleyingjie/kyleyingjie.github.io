@@ -57,6 +57,8 @@ a { color: inherit; }
 .brand-mark { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
 nav { gap: 24px; }
 nav a, .social-links a { color: var(--muted); text-decoration: none; }
+nav a:has(.nav-coming-soon) { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1.05; }
+.nav-coming-soon { margin-top: 3px; color: color-mix(in srgb, currentColor 68%, transparent); font-size: 0.62rem; font-weight: 500; line-height: 1; }
 nav a:hover, nav a:focus-visible, nav a.is-current, .social-links a:hover, .social-links a:focus-visible { color: var(--accent); }
 .nav-button { padding: 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
 .nav-button:hover, .nav-button:focus-visible { color: var(--accent); }
