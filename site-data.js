@@ -272,11 +272,8 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "image": "assets/projects/wind-character-design/wind-character-design-01.jpg",
       "images": [
         "assets/projects/wind-character-design/wind-character-design-01.jpg",
-        "assets/projects/wind-character-design/wind-character-design-02.jpg",
-        "assets/projects/wind-character-design/wind-character-design-06.jpg",
         "assets/projects/wind-character-design/wind-character-design-03.jpg",
-        "assets/projects/wind-character-design/wind-character-design-04.jpg",
-        "assets/projects/wind-character-design/wind-character-design-05.jpg"
+        "assets/projects/wind-character-design/wind-character-design-04.jpg"
       ]
     }
   ]
