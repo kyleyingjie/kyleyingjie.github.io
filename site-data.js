@@ -238,7 +238,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "images": [
         "assets/projects/fan-art/fan-art-01.jpg",
         "assets/projects/fan-art/fan-art-02.jpg",
-        "assets/projects/fan-art/fan-art-03.jpg",
+        "assets/projects/fan-art/fan-art-03-akali.jpg",
         "assets/projects/fan-art/fan-art-04.jpg",
         "assets/projects/fan-art/fan-art-05.jpg",
         "assets/projects/fan-art/fan-art-06.jpg",
