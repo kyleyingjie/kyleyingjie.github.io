@@ -171,12 +171,11 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     },
     {
       "id": "professional-portfolio",
-      "title": "Professional Portfolio",
+      "title": "Professional Works",
       "category": "Personal Project",
       "aspect": "landscape",
-      "image": "assets/projects/professional-portfolio/professional-portfolio-01.jpg",
+      "image": "assets/projects/professional-portfolio/professional-portfolio-02.jpg",
       "images": [
-        "assets/projects/professional-portfolio/professional-portfolio-01.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-02.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-03.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-04.jpg",
@@ -185,8 +184,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
         "assets/projects/professional-portfolio/professional-portfolio-07.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-08.jpg",
         "assets/projects/professional-portfolio/professional-portfolio-09.jpg",
-        "assets/projects/professional-portfolio/professional-portfolio-10.jpg",
-        "assets/projects/professional-portfolio/professional-portfolio-11.jpg"
+        "assets/projects/professional-portfolio/professional-portfolio-10.jpg"
       ]
     },
     {
