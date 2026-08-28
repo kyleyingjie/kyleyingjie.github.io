@@ -11,9 +11,9 @@ const ARTWORK_ORDER = [
   "infold-merch",
   "klaus-environment",
   "elf-forager",
+  "dungeon-sweeper",
   "professional-portfolio",
   "survivor-pack",
-  "dungeon-sweeper",
   "game-ui-design"
 ];
 
