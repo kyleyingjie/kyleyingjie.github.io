@@ -125,7 +125,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     },
     {
       "id": "giant-armor-glove",
-      "title": "Giant Armor Glove Design",
+      "title": "Gauntlet Design",
       "category": "Personal Project",
       "aspect": "landscape",
       "image": "assets/projects/giant-armor-glove/giant-armor-glove-04.jpg",
