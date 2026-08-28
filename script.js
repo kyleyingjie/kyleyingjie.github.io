@@ -13,8 +13,8 @@ const ARTWORK_ORDER = [
   "elf-forager",
   "dungeon-sweeper",
   "professional-portfolio",
-  "survivor-pack",
-  "game-ui-design"
+  "game-ui-design",
+  "survivor-pack"
 ];
 
 const DEFAULT_SITE_DATA = {
