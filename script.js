@@ -3,15 +3,15 @@ const PUBLISH_TOKEN_STORAGE_KEY = "kyleyingjie-github-publish-token-v1";
 const EDITOR_MODE = new URLSearchParams(window.location.search).get("edit") === "1";
 const DEFAULT_CATEGORIES = ["Personal Project"];
 const ARTWORK_ORDER = [
-  "fan-art",
+  "for-fun-challenge",
   "giant-armor-glove",
   "wind-character-design",
-  "for-fun-challenge",
+  "fan-art",
   "creature-design",
+  "infold-merch",
   "elf-forager",
   "klaus-environment",
   "professional-portfolio",
-  "infold-merch",
   "survivor-pack",
   "dungeon-sweeper",
   "game-ui-design"
