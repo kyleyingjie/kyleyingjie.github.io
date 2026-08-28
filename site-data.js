@@ -115,7 +115,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "title": "Survivor Pack - Art Test",
       "category": "Personal Project",
       "aspect": "portrait",
-      "image": "assets/projects/survivor-pack/survivor-pack-03.jpg",
+      "image": "assets/projects/survivor-pack/survivor-pack-02.jpg",
       "images": [
         "assets/projects/survivor-pack/survivor-pack-01.jpg",
         "assets/projects/survivor-pack/survivor-pack-02.jpg",
