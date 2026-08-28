@@ -2,6 +2,20 @@ const STORAGE_KEY = "kyleyingjie-portfolio-site-data-v2";
 const PUBLISH_TOKEN_STORAGE_KEY = "kyleyingjie-github-publish-token-v1";
 const EDITOR_MODE = new URLSearchParams(window.location.search).get("edit") === "1";
 const DEFAULT_CATEGORIES = ["Personal Project"];
+const ARTWORK_ORDER = [
+  "fan-art",
+  "giant-armor-glove",
+  "wind-character-design",
+  "for-fun-challenge",
+  "creature-design",
+  "elf-forager",
+  "klaus-environment",
+  "professional-portfolio",
+  "infold-merch",
+  "survivor-pack",
+  "dungeon-sweeper",
+  "game-ui-design"
+];
 
 const DEFAULT_SITE_DATA = {
   appearance: {
@@ -139,6 +153,7 @@ const DEFAULT_SITE_DATA = {
 };
 
 let siteData = loadSiteData();
+siteData.artworks.sort((a, b) => ARTWORK_ORDER.indexOf(a.id) - ARTWORK_ORDER.indexOf(b.id));
 let selectedCategory = "All";
 let lightboxItems = [];
 let lightboxIndex = 0;
