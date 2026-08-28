@@ -112,7 +112,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
     },
     {
       "id": "survivor-pack",
-      "title": "Survivor Pack - Art Test",
+      "title": "Survivor Pack - Bundle Pop-up",
       "category": "Personal Project",
       "aspect": "portrait",
       "image": "assets/projects/survivor-pack/survivor-pack-02.jpg",
