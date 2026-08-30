@@ -119,6 +119,7 @@ window.PORTFOLIO_PUBLISHED_DATA = {
       "images": [
         "assets/projects/survivor-pack/survivor-pack-01.jpg",
         "assets/projects/survivor-pack/survivor-pack-02.jpg",
+        "assets/projects/survivor-pack/survivor-pack-03-dark.jpg",
         "assets/projects/survivor-pack/survivor-pack-03.jpg",
         "assets/projects/survivor-pack/survivor-pack-04.jpg"
       ]
